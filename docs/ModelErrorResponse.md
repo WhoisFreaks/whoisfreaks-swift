@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **timestamp** | **String** |  | [optional] 
 **path** | **String** |  | [optional] 
-**status** | **Int** |  | [optional] 
+**status** | **AnyCodable** |  | [optional] 
 **error** | **String** |  | [optional] 
 **message** | **String** |  | [optional] 
 **code** | **Int** |  | [optional] 

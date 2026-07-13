@@ -10,16 +10,17 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Error response. &#x60;status&#x60; may be an integer (e.g. 401), boolean, or string depending on the endpoint, so it is intentionally untyped to avoid deserialization failures. */
 public struct ModelErrorResponse: Codable, JSONEncodable, Hashable {
 
     public var timestamp: String?
     public var path: String?
-    public var status: Int?
+    public var status: AnyCodable?
     public var error: String?
     public var message: String?
     public var code: Int?
 
-    public init(timestamp: String? = nil, path: String? = nil, status: Int? = nil, error: String? = nil, message: String? = nil, code: Int? = nil) {
+    public init(timestamp: String? = nil, path: String? = nil, status: AnyCodable? = nil, error: String? = nil, message: String? = nil, code: Int? = nil) {
         self.timestamp = timestamp
         self.path = path
         self.status = status
@@ -73,7 +74,7 @@ public struct ModelErrorResponse: Codable, JSONEncodable, Hashable {
 
         timestamp = try container.decodeIfPresent(String.self, forKey: .timestamp)
         path = try container.decodeIfPresent(String.self, forKey: .path)
-        status = try container.decodeIfPresent(Int.self, forKey: .status)
+        status = try container.decodeIfPresent(AnyCodable.self, forKey: .status)
         error = try container.decodeIfPresent(String.self, forKey: .error)
         message = try container.decodeIfPresent(String.self, forKey: .message)
         code = try container.decodeIfPresent(Int.self, forKey: .code)
