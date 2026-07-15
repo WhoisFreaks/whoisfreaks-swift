@@ -10,6 +10,7 @@ import Foundation
 import AnyCodable
 #endif
 
+/** Reverse WHOIS response. Pagination keys are capitalized (Total_Result/Total_Pages/Current_Page) as returned by the API. */
 public struct ReverseWhoisResponse: Codable, JSONEncodable, Hashable {
 
     public var totalResult: Int?
@@ -25,9 +26,9 @@ public struct ReverseWhoisResponse: Codable, JSONEncodable, Hashable {
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
-        case totalResult = "total_Result"
-        case totalPages = "total_Pages"
-        case currentPage = "current_Page"
+        case totalResult = "Total_Result"
+        case totalPages = "Total_Pages"
+        case currentPage = "Current_Page"
         case whoisDomainsHistorical = "whois_domains_historical"
     }
 
@@ -68,9 +69,9 @@ public struct ReverseWhoisResponse: Codable, JSONEncodable, Hashable {
         currentPage = try container.decodeIfPresent(Int.self, forKey: .currentPage)
         whoisDomainsHistorical = try container.decodeIfPresent([WhoisHistoricalItem].self, forKey: .whoisDomainsHistorical)
         var nonAdditionalPropertyKeys = Set<String>()
-        nonAdditionalPropertyKeys.insert("total_Result")
-        nonAdditionalPropertyKeys.insert("total_Pages")
-        nonAdditionalPropertyKeys.insert("current_Page")
+        nonAdditionalPropertyKeys.insert("Total_Result")
+        nonAdditionalPropertyKeys.insert("Total_Pages")
+        nonAdditionalPropertyKeys.insert("Current_Page")
         nonAdditionalPropertyKeys.insert("whois_domains_historical")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
         additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)

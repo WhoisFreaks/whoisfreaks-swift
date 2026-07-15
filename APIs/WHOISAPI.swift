@@ -166,6 +166,64 @@ open class WHOISAPI {
     /**
      * enum for parameter format
      */
+    public enum Format_whoisHistory: String, CaseIterable {
+        case json = "json"
+        case xml = "xml"
+    }
+
+    /**
+     Historical WHOIS records for a domain
+     
+     - parameter apiKey: (query) Your WHOISFreaks API key 
+     - parameter domainName: (query) Domain to fetch historical WHOIS records for 
+     - parameter page: (query) Page number (optional)
+     - parameter format: (query)  (optional)
+     - returns: WhoisHistoricalResponse
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func whoisHistory(apiKey: String, domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil) async throws -> WhoisHistoricalResponse {
+        return try await whoisHistoryWithRequestBuilder(apiKey: apiKey, domainName: domainName, page: page, format: format).execute().body
+    }
+
+    /**
+     Historical WHOIS records for a domain
+     - GET /v2.0/whois/history
+     - API Key:
+       - type: apiKey apiKey (QUERY)
+       - name: ApiKeyAuth
+     - parameter apiKey: (query) Your WHOISFreaks API key 
+     - parameter domainName: (query) Domain to fetch historical WHOIS records for 
+     - parameter page: (query) Page number (optional)
+     - parameter format: (query)  (optional)
+     - returns: RequestBuilder<WhoisHistoricalResponse> 
+     */
+    open class func whoisHistoryWithRequestBuilder(apiKey: String, domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil) -> RequestBuilder<WhoisHistoricalResponse> {
+        let localVariablePath = "/v2.0/whois/history"
+        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
+            "domainName": (wrappedValue: domainName.encodeToJSON(), isExplode: true),
+            "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<WhoisHistoricalResponse>.Type = WhoisFreaksAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     * enum for parameter format
+     */
     public enum Format_whoisLive: String, CaseIterable {
         case json = "json"
         case xml = "xml"
@@ -215,6 +273,64 @@ open class WHOISAPI {
         let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
 
         let localVariableRequestBuilder: RequestBuilder<WhoisResponse>.Type = WhoisFreaksAPI.requestBuilderFactory.getBuilder()
+
+        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
+    }
+
+    /**
+     * enum for parameter format
+     */
+    public enum Format_whoisReverse: String, CaseIterable {
+        case json = "json"
+        case xml = "xml"
+    }
+
+    /**
+     Reverse WHOIS lookup by keyword
+     
+     - parameter apiKey: (query) Your WHOISFreaks API key 
+     - parameter keyword: (query) Keyword to search across WHOIS records 
+     - parameter page: (query) Page number (optional)
+     - parameter format: (query)  (optional)
+     - returns: ReverseWhoisResponse
+     */
+    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
+    open class func whoisReverse(apiKey: String, keyword: String, page: Int? = nil, format: Format_whoisReverse? = nil) async throws -> ReverseWhoisResponse {
+        return try await whoisReverseWithRequestBuilder(apiKey: apiKey, keyword: keyword, page: page, format: format).execute().body
+    }
+
+    /**
+     Reverse WHOIS lookup by keyword
+     - GET /v2.0/whois/reverse
+     - API Key:
+       - type: apiKey apiKey (QUERY)
+       - name: ApiKeyAuth
+     - parameter apiKey: (query) Your WHOISFreaks API key 
+     - parameter keyword: (query) Keyword to search across WHOIS records 
+     - parameter page: (query) Page number (optional)
+     - parameter format: (query)  (optional)
+     - returns: RequestBuilder<ReverseWhoisResponse> 
+     */
+    open class func whoisReverseWithRequestBuilder(apiKey: String, keyword: String, page: Int? = nil, format: Format_whoisReverse? = nil) -> RequestBuilder<ReverseWhoisResponse> {
+        let localVariablePath = "/v2.0/whois/reverse"
+        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableParameters: [String: Any]? = nil
+
+        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
+        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
+            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
+            "keyword": (wrappedValue: keyword.encodeToJSON(), isExplode: true),
+            "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
+            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
+        ])
+
+        let localVariableNillableHeaders: [String: Any?] = [
+            :
+        ]
+
+        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
+
+        let localVariableRequestBuilder: RequestBuilder<ReverseWhoisResponse>.Type = WhoisFreaksAPI.requestBuilderFactory.getBuilder()
 
         return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
     }

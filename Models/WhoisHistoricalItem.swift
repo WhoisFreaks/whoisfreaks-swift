@@ -16,6 +16,10 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
     public var status: Bool?
     public var domainName: String?
     public var queryTime: String?
+    public var whoisServer: String?
+    public var domainRegistered: String?
+    public var secureDns: Bool?
+    public var domainHandle: String?
     public var createDate: String?
     public var updateDate: String?
     public var expiryDate: String?
@@ -25,15 +29,22 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
     public var administrativeContact: PersonalInformation?
     public var technicalContact: PersonalInformation?
     public var billingContact: PersonalInformation?
+    public var eligibilityInfo: EligibilityInfo?
+    public var abuseContact: RegistrarInformation?
     public var nameServers: [String]?
     public var domainStatus: [String]?
     public var whoisRawDomain: String?
+    public var registryData: RegistryData?
 
-    public init(num: Int? = nil, status: Bool? = nil, domainName: String? = nil, queryTime: String? = nil, createDate: String? = nil, updateDate: String? = nil, expiryDate: String? = nil, domainRegistrar: RegistrarInformation? = nil, resellerContact: ResellerContact? = nil, registrantContact: PersonalInformation? = nil, administrativeContact: PersonalInformation? = nil, technicalContact: PersonalInformation? = nil, billingContact: PersonalInformation? = nil, nameServers: [String]? = nil, domainStatus: [String]? = nil, whoisRawDomain: String? = nil) {
+    public init(num: Int? = nil, status: Bool? = nil, domainName: String? = nil, queryTime: String? = nil, whoisServer: String? = nil, domainRegistered: String? = nil, secureDns: Bool? = nil, domainHandle: String? = nil, createDate: String? = nil, updateDate: String? = nil, expiryDate: String? = nil, domainRegistrar: RegistrarInformation? = nil, resellerContact: ResellerContact? = nil, registrantContact: PersonalInformation? = nil, administrativeContact: PersonalInformation? = nil, technicalContact: PersonalInformation? = nil, billingContact: PersonalInformation? = nil, eligibilityInfo: EligibilityInfo? = nil, abuseContact: RegistrarInformation? = nil, nameServers: [String]? = nil, domainStatus: [String]? = nil, whoisRawDomain: String? = nil, registryData: RegistryData? = nil) {
         self.num = num
         self.status = status
         self.domainName = domainName
         self.queryTime = queryTime
+        self.whoisServer = whoisServer
+        self.domainRegistered = domainRegistered
+        self.secureDns = secureDns
+        self.domainHandle = domainHandle
         self.createDate = createDate
         self.updateDate = updateDate
         self.expiryDate = expiryDate
@@ -43,9 +54,12 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
         self.administrativeContact = administrativeContact
         self.technicalContact = technicalContact
         self.billingContact = billingContact
+        self.eligibilityInfo = eligibilityInfo
+        self.abuseContact = abuseContact
         self.nameServers = nameServers
         self.domainStatus = domainStatus
         self.whoisRawDomain = whoisRawDomain
+        self.registryData = registryData
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -53,6 +67,10 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
         case status
         case domainName = "domain_name"
         case queryTime = "query_time"
+        case whoisServer = "whois_server"
+        case domainRegistered = "domain_registered"
+        case secureDns = "secure_dns"
+        case domainHandle = "domain_handle"
         case createDate = "create_date"
         case updateDate = "update_date"
         case expiryDate = "expiry_date"
@@ -62,9 +80,12 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
         case administrativeContact = "administrative_contact"
         case technicalContact = "technical_contact"
         case billingContact = "billing_contact"
+        case eligibilityInfo = "eligibility_info"
+        case abuseContact = "abuse_contact"
         case nameServers = "name_servers"
         case domainStatus = "domain_status"
         case whoisRawDomain = "whois_raw_domain"
+        case registryData = "registry_data"
     }
 
     public var additionalProperties: [String: AnyCodable] = [:]
@@ -90,6 +111,10 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(domainName, forKey: .domainName)
         try container.encodeIfPresent(queryTime, forKey: .queryTime)
+        try container.encodeIfPresent(whoisServer, forKey: .whoisServer)
+        try container.encodeIfPresent(domainRegistered, forKey: .domainRegistered)
+        try container.encodeIfPresent(secureDns, forKey: .secureDns)
+        try container.encodeIfPresent(domainHandle, forKey: .domainHandle)
         try container.encodeIfPresent(createDate, forKey: .createDate)
         try container.encodeIfPresent(updateDate, forKey: .updateDate)
         try container.encodeIfPresent(expiryDate, forKey: .expiryDate)
@@ -99,9 +124,12 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(administrativeContact, forKey: .administrativeContact)
         try container.encodeIfPresent(technicalContact, forKey: .technicalContact)
         try container.encodeIfPresent(billingContact, forKey: .billingContact)
+        try container.encodeIfPresent(eligibilityInfo, forKey: .eligibilityInfo)
+        try container.encodeIfPresent(abuseContact, forKey: .abuseContact)
         try container.encodeIfPresent(nameServers, forKey: .nameServers)
         try container.encodeIfPresent(domainStatus, forKey: .domainStatus)
         try container.encodeIfPresent(whoisRawDomain, forKey: .whoisRawDomain)
+        try container.encodeIfPresent(registryData, forKey: .registryData)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
     }
@@ -115,6 +143,10 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
         status = try container.decodeIfPresent(Bool.self, forKey: .status)
         domainName = try container.decodeIfPresent(String.self, forKey: .domainName)
         queryTime = try container.decodeIfPresent(String.self, forKey: .queryTime)
+        whoisServer = try container.decodeIfPresent(String.self, forKey: .whoisServer)
+        domainRegistered = try container.decodeIfPresent(String.self, forKey: .domainRegistered)
+        secureDns = try container.decodeIfPresent(Bool.self, forKey: .secureDns)
+        domainHandle = try container.decodeIfPresent(String.self, forKey: .domainHandle)
         createDate = try container.decodeIfPresent(String.self, forKey: .createDate)
         updateDate = try container.decodeIfPresent(String.self, forKey: .updateDate)
         expiryDate = try container.decodeIfPresent(String.self, forKey: .expiryDate)
@@ -124,14 +156,21 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
         administrativeContact = try container.decodeIfPresent(PersonalInformation.self, forKey: .administrativeContact)
         technicalContact = try container.decodeIfPresent(PersonalInformation.self, forKey: .technicalContact)
         billingContact = try container.decodeIfPresent(PersonalInformation.self, forKey: .billingContact)
+        eligibilityInfo = try container.decodeIfPresent(EligibilityInfo.self, forKey: .eligibilityInfo)
+        abuseContact = try container.decodeIfPresent(RegistrarInformation.self, forKey: .abuseContact)
         nameServers = try container.decodeIfPresent([String].self, forKey: .nameServers)
         domainStatus = try container.decodeIfPresent([String].self, forKey: .domainStatus)
         whoisRawDomain = try container.decodeIfPresent(String.self, forKey: .whoisRawDomain)
+        registryData = try container.decodeIfPresent(RegistryData.self, forKey: .registryData)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("num")
         nonAdditionalPropertyKeys.insert("status")
         nonAdditionalPropertyKeys.insert("domain_name")
         nonAdditionalPropertyKeys.insert("query_time")
+        nonAdditionalPropertyKeys.insert("whois_server")
+        nonAdditionalPropertyKeys.insert("domain_registered")
+        nonAdditionalPropertyKeys.insert("secure_dns")
+        nonAdditionalPropertyKeys.insert("domain_handle")
         nonAdditionalPropertyKeys.insert("create_date")
         nonAdditionalPropertyKeys.insert("update_date")
         nonAdditionalPropertyKeys.insert("expiry_date")
@@ -141,9 +180,12 @@ public struct WhoisHistoricalItem: Codable, JSONEncodable, Hashable {
         nonAdditionalPropertyKeys.insert("administrative_contact")
         nonAdditionalPropertyKeys.insert("technical_contact")
         nonAdditionalPropertyKeys.insert("billing_contact")
+        nonAdditionalPropertyKeys.insert("eligibility_info")
+        nonAdditionalPropertyKeys.insert("abuse_contact")
         nonAdditionalPropertyKeys.insert("name_servers")
         nonAdditionalPropertyKeys.insert("domain_status")
         nonAdditionalPropertyKeys.insert("whois_raw_domain")
+        nonAdditionalPropertyKeys.insert("registry_data")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
         additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }
