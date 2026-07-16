@@ -23,14 +23,13 @@ open class IPWHOISAPI {
     /**
      IP WHOIS Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter ip: (query)  
      - parameter format: (query)  (optional, default to .json)
      - returns: IpWhoisResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func ipWhois(apiKey: String, ip: String, format: Format_ipWhois? = nil) async throws -> IpWhoisResponse {
-        return try await ipWhoisWithRequestBuilder(apiKey: apiKey, ip: ip, format: format).execute().body
+    open class func ipWhois(ip: String, format: Format_ipWhois? = nil) async throws -> IpWhoisResponse {
+        return try await ipWhoisWithRequestBuilder(ip: ip, format: format).execute().body
     }
 
     /**
@@ -40,19 +39,17 @@ open class IPWHOISAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter ip: (query)  
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<IpWhoisResponse> 
      */
-    open class func ipWhoisWithRequestBuilder(apiKey: String, ip: String, format: Format_ipWhois? = nil) -> RequestBuilder<IpWhoisResponse> {
+    open class func ipWhoisWithRequestBuilder(ip: String, format: Format_ipWhois? = nil) -> RequestBuilder<IpWhoisResponse> {
         let localVariablePath = "/v1.0/ip-whois"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "ip": (wrappedValue: ip.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])

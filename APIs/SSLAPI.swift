@@ -23,7 +23,6 @@ open class SSLAPI {
     /**
      SSL Certificate Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query)  
      - parameter chain: (query)  (optional, default to false)
      - parameter sslRaw: (query)  (optional, default to false)
@@ -31,8 +30,8 @@ open class SSLAPI {
      - returns: SslResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func sslLookup(apiKey: String, domainName: String, chain: Bool? = nil, sslRaw: Bool? = nil, format: Format_sslLookup? = nil) async throws -> SslResponse {
-        return try await sslLookupWithRequestBuilder(apiKey: apiKey, domainName: domainName, chain: chain, sslRaw: sslRaw, format: format).execute().body
+    open class func sslLookup(domainName: String, chain: Bool? = nil, sslRaw: Bool? = nil, format: Format_sslLookup? = nil) async throws -> SslResponse {
+        return try await sslLookupWithRequestBuilder(domainName: domainName, chain: chain, sslRaw: sslRaw, format: format).execute().body
     }
 
     /**
@@ -42,21 +41,19 @@ open class SSLAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query)  
      - parameter chain: (query)  (optional, default to false)
      - parameter sslRaw: (query)  (optional, default to false)
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<SslResponse> 
      */
-    open class func sslLookupWithRequestBuilder(apiKey: String, domainName: String, chain: Bool? = nil, sslRaw: Bool? = nil, format: Format_sslLookup? = nil) -> RequestBuilder<SslResponse> {
+    open class func sslLookupWithRequestBuilder(domainName: String, chain: Bool? = nil, sslRaw: Bool? = nil, format: Format_sslLookup? = nil) -> RequestBuilder<SslResponse> {
         let localVariablePath = "/v1.0/ssl/live"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domainName": (wrappedValue: domainName.encodeToJSON(), isExplode: true),
             "chain": (wrappedValue: chain?.encodeToJSON(), isExplode: true),
             "sslRaw": (wrappedValue: sslRaw?.encodeToJSON(), isExplode: true),

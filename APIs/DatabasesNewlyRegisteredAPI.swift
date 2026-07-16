@@ -15,15 +15,14 @@ open class DatabasesNewlyRegisteredAPI {
     /**
      Newly Registered ccTLD (CSV)
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyCctld(apiKey: String, whois: Bool, date: Date? = nil, tlds: String? = nil) async throws -> URL {
-        return try await dbNewlyCctldWithRequestBuilder(apiKey: apiKey, whois: whois, date: date, tlds: tlds).execute().body
+    open class func dbNewlyCctld(whois: Bool, date: Date? = nil, tlds: String? = nil) async throws -> URL {
+        return try await dbNewlyCctldWithRequestBuilder(whois: whois, date: date, tlds: tlds).execute().body
     }
 
     /**
@@ -33,20 +32,18 @@ open class DatabasesNewlyRegisteredAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyCctldWithRequestBuilder(apiKey: String, whois: Bool, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyCctldWithRequestBuilder(whois: Bool, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/cctld"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "whois": (wrappedValue: whois.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
             "tlds": (wrappedValue: tlds?.encodeToJSON(), isExplode: true),
@@ -66,13 +63,12 @@ open class DatabasesNewlyRegisteredAPI {
     /**
      Newly Registered ccTLD Cleaned WHOIS (CSV)
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyCctldCleaned(apiKey: String, date: Date? = nil) async throws -> URL {
-        return try await dbNewlyCctldCleanedWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbNewlyCctldCleaned(date: Date? = nil) async throws -> URL {
+        return try await dbNewlyCctldCleanedWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -82,18 +78,16 @@ open class DatabasesNewlyRegisteredAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyCctldCleanedWithRequestBuilder(apiKey: String, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyCctldCleanedWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/cctld/cleaned"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
 
@@ -111,14 +105,13 @@ open class DatabasesNewlyRegisteredAPI {
     /**
      Newly Registered ccTLD (JSON)
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: [String]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyCctldJson(apiKey: String, date: Date? = nil, tlds: String? = nil) async throws -> [String] {
-        return try await dbNewlyCctldJsonWithRequestBuilder(apiKey: apiKey, date: date, tlds: tlds).execute().body
+    open class func dbNewlyCctldJson(date: Date? = nil, tlds: String? = nil) async throws -> [String] {
+        return try await dbNewlyCctldJsonWithRequestBuilder(date: date, tlds: tlds).execute().body
     }
 
     /**
@@ -128,19 +121,17 @@ open class DatabasesNewlyRegisteredAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<[String]> 
      */
-    open class func dbNewlyCctldJsonWithRequestBuilder(apiKey: String, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
+    open class func dbNewlyCctldJsonWithRequestBuilder(date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
         let localVariablePath = "/v3.1/domains/newly/cctld"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
             "tlds": (wrappedValue: tlds?.encodeToJSON(), isExplode: true),
         ])
@@ -159,13 +150,12 @@ open class DatabasesNewlyRegisteredAPI {
     /**
      Newly Registered With DNS
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyDns(apiKey: String, date: Date? = nil) async throws -> URL {
-        return try await dbNewlyDnsWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbNewlyDns(date: Date? = nil) async throws -> URL {
+        return try await dbNewlyDnsWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -175,18 +165,16 @@ open class DatabasesNewlyRegisteredAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyDnsWithRequestBuilder(apiKey: String, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyDnsWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/newly/dns"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
 
@@ -204,15 +192,14 @@ open class DatabasesNewlyRegisteredAPI {
     /**
      Newly Registered gTLD (CSV)
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyGtld(apiKey: String, whois: Bool, date: Date? = nil, tlds: String? = nil) async throws -> URL {
-        return try await dbNewlyGtldWithRequestBuilder(apiKey: apiKey, whois: whois, date: date, tlds: tlds).execute().body
+    open class func dbNewlyGtld(whois: Bool, date: Date? = nil, tlds: String? = nil) async throws -> URL {
+        return try await dbNewlyGtldWithRequestBuilder(whois: whois, date: date, tlds: tlds).execute().body
     }
 
     /**
@@ -222,20 +209,18 @@ open class DatabasesNewlyRegisteredAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyGtldWithRequestBuilder(apiKey: String, whois: Bool, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyGtldWithRequestBuilder(whois: Bool, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/gtld"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "whois": (wrappedValue: whois.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
             "tlds": (wrappedValue: tlds?.encodeToJSON(), isExplode: true),
@@ -255,13 +240,12 @@ open class DatabasesNewlyRegisteredAPI {
     /**
      Newly Registered gTLD Cleaned WHOIS (CSV)
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyGtldCleaned(apiKey: String, date: Date? = nil) async throws -> URL {
-        return try await dbNewlyGtldCleanedWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbNewlyGtldCleaned(date: Date? = nil) async throws -> URL {
+        return try await dbNewlyGtldCleanedWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -271,18 +255,16 @@ open class DatabasesNewlyRegisteredAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyGtldCleanedWithRequestBuilder(apiKey: String, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyGtldCleanedWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/gtld/cleaned"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
 
@@ -300,14 +282,13 @@ open class DatabasesNewlyRegisteredAPI {
     /**
      Newly Registered gTLD (JSON)
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: [String]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyGtldJson(apiKey: String, date: Date? = nil, tlds: String? = nil) async throws -> [String] {
-        return try await dbNewlyGtldJsonWithRequestBuilder(apiKey: apiKey, date: date, tlds: tlds).execute().body
+    open class func dbNewlyGtldJson(date: Date? = nil, tlds: String? = nil) async throws -> [String] {
+        return try await dbNewlyGtldJsonWithRequestBuilder(date: date, tlds: tlds).execute().body
     }
 
     /**
@@ -317,19 +298,17 @@ open class DatabasesNewlyRegisteredAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<[String]> 
      */
-    open class func dbNewlyGtldJsonWithRequestBuilder(apiKey: String, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
+    open class func dbNewlyGtldJsonWithRequestBuilder(date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
         let localVariablePath = "/v3.1/domains/newly/gtld"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
             "tlds": (wrappedValue: tlds?.encodeToJSON(), isExplode: true),
         ])

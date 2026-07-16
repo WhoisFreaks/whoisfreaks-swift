@@ -23,14 +23,13 @@ open class DomainReputationAPI {
     /**
      Domain Reputation Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query) The domain name to assess 
      - parameter format: (query)  (optional, default to .json)
      - returns: DomainReputationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func domainReputation(apiKey: String, domainName: String, format: Format_domainReputation? = nil) async throws -> DomainReputationResponse {
-        return try await domainReputationWithRequestBuilder(apiKey: apiKey, domainName: domainName, format: format).execute().body
+    open class func domainReputation(domainName: String, format: Format_domainReputation? = nil) async throws -> DomainReputationResponse {
+        return try await domainReputationWithRequestBuilder(domainName: domainName, format: format).execute().body
     }
 
     /**
@@ -40,19 +39,17 @@ open class DomainReputationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query) The domain name to assess 
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<DomainReputationResponse> 
      */
-    open class func domainReputationWithRequestBuilder(apiKey: String, domainName: String, format: Format_domainReputation? = nil) -> RequestBuilder<DomainReputationResponse> {
+    open class func domainReputationWithRequestBuilder(domainName: String, format: Format_domainReputation? = nil) -> RequestBuilder<DomainReputationResponse> {
         let localVariablePath = "/v1/domain/security"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domainName": (wrappedValue: domainName.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])

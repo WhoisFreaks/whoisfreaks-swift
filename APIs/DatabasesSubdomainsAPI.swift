@@ -15,13 +15,12 @@ open class DatabasesSubdomainsAPI {
     /**
      Subdomains Daily
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbSubdomainsDaily(apiKey: String, date: Date? = nil) async throws -> URL {
-        return try await dbSubdomainsDailyWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbSubdomainsDaily(date: Date? = nil) async throws -> URL {
+        return try await dbSubdomainsDailyWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -31,18 +30,16 @@ open class DatabasesSubdomainsAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbSubdomainsDailyWithRequestBuilder(apiKey: String, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbSubdomainsDailyWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.2/download/dbupdate/daily/subdomains"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
 
@@ -60,13 +57,12 @@ open class DatabasesSubdomainsAPI {
     /**
      Subdomains Monthly
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbSubdomainsMonthly(apiKey: String, date: Date? = nil) async throws -> URL {
-        return try await dbSubdomainsMonthlyWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbSubdomainsMonthly(date: Date? = nil) async throws -> URL {
+        return try await dbSubdomainsMonthlyWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -76,18 +72,16 @@ open class DatabasesSubdomainsAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbSubdomainsMonthlyWithRequestBuilder(apiKey: String, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbSubdomainsMonthlyWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.2/download/dbupdate/monthly/subdomains"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
 
@@ -105,13 +99,12 @@ open class DatabasesSubdomainsAPI {
     /**
      Subdomains Weekly
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbSubdomainsWeekly(apiKey: String, date: Date? = nil) async throws -> URL {
-        return try await dbSubdomainsWeeklyWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbSubdomainsWeekly(date: Date? = nil) async throws -> URL {
+        return try await dbSubdomainsWeeklyWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -121,18 +114,16 @@ open class DatabasesSubdomainsAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbSubdomainsWeeklyWithRequestBuilder(apiKey: String, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbSubdomainsWeeklyWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.2/download/dbupdate/weekly/subdomains"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **sslLookup**
 ```swift
-    open class func sslLookup(apiKey: String, domainName: String, chain: Bool? = nil, sslRaw: Bool? = nil, format: Format_sslLookup? = nil, completion: @escaping (_ data: SslResponse?, _ error: Error?) -> Void)
+    open class func sslLookup(domainName: String, chain: Bool? = nil, sslRaw: Bool? = nil, format: Format_sslLookup? = nil, completion: @escaping (_ data: SslResponse?, _ error: Error?) -> Void)
 ```
 
 SSL Certificate Lookup
@@ -21,14 +21,13 @@ Real-time SSL cert with optional chain.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let domainName = "domainName_example" // String | 
 let chain = true // Bool |  (optional) (default to false)
 let sslRaw = true // Bool |  (optional) (default to false)
 let format = "format_example" // String |  (optional) (default to .json)
 
 // SSL Certificate Lookup
-SSLAPI.sslLookup(apiKey: apiKey, domainName: domainName, chain: chain, sslRaw: sslRaw, format: format) { (response, error) in
+SSLAPI.sslLookup(domainName: domainName, chain: chain, sslRaw: sslRaw, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -44,7 +43,6 @@ SSLAPI.sslLookup(apiKey: apiKey, domainName: domainName, chain: chain, sslRaw: s
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **domainName** | **String** |  | 
  **chain** | **Bool** |  | [optional] [default to false]
  **sslRaw** | **Bool** |  | [optional] [default to false]

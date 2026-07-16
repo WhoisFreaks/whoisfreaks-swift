@@ -23,15 +23,14 @@ open class DNSAPI {
     /**
      Bulk DNS Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter type: (query)  
      - parameter dnsBulkRequest: (body)  
      - parameter format: (query)  (optional, default to .json)
      - returns: BulkDnsResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dnsBulk(apiKey: String, type: String, dnsBulkRequest: DnsBulkRequest, format: Format_dnsBulk? = nil) async throws -> BulkDnsResponse {
-        return try await dnsBulkWithRequestBuilder(apiKey: apiKey, type: type, dnsBulkRequest: dnsBulkRequest, format: format).execute().body
+    open class func dnsBulk(type: String, dnsBulkRequest: DnsBulkRequest, format: Format_dnsBulk? = nil) async throws -> BulkDnsResponse {
+        return try await dnsBulkWithRequestBuilder(type: type, dnsBulkRequest: dnsBulkRequest, format: format).execute().body
     }
 
     /**
@@ -41,20 +40,18 @@ open class DNSAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter type: (query)  
      - parameter dnsBulkRequest: (body)  
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<BulkDnsResponse> 
      */
-    open class func dnsBulkWithRequestBuilder(apiKey: String, type: String, dnsBulkRequest: DnsBulkRequest, format: Format_dnsBulk? = nil) -> RequestBuilder<BulkDnsResponse> {
+    open class func dnsBulkWithRequestBuilder(type: String, dnsBulkRequest: DnsBulkRequest, format: Format_dnsBulk? = nil) -> RequestBuilder<BulkDnsResponse> {
         let localVariablePath = "/v2.0/dns/bulk/live"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: dnsBulkRequest)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "type": (wrappedValue: type.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
@@ -81,7 +78,6 @@ open class DNSAPI {
     /**
      Historical DNS Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query)  
      - parameter type: (query)  
      - parameter page: (query)  (optional, default to 1)
@@ -89,8 +85,8 @@ open class DNSAPI {
      - returns: HistoricalDnsResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dnsHistorical(apiKey: String, domainName: String, type: String, page: Int? = nil, format: Format_dnsHistorical? = nil) async throws -> HistoricalDnsResponse {
-        return try await dnsHistoricalWithRequestBuilder(apiKey: apiKey, domainName: domainName, type: type, page: page, format: format).execute().body
+    open class func dnsHistorical(domainName: String, type: String, page: Int? = nil, format: Format_dnsHistorical? = nil) async throws -> HistoricalDnsResponse {
+        return try await dnsHistoricalWithRequestBuilder(domainName: domainName, type: type, page: page, format: format).execute().body
     }
 
     /**
@@ -100,21 +96,19 @@ open class DNSAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query)  
      - parameter type: (query)  
      - parameter page: (query)  (optional, default to 1)
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<HistoricalDnsResponse> 
      */
-    open class func dnsHistoricalWithRequestBuilder(apiKey: String, domainName: String, type: String, page: Int? = nil, format: Format_dnsHistorical? = nil) -> RequestBuilder<HistoricalDnsResponse> {
+    open class func dnsHistoricalWithRequestBuilder(domainName: String, type: String, page: Int? = nil, format: Format_dnsHistorical? = nil) -> RequestBuilder<HistoricalDnsResponse> {
         let localVariablePath = "/v2.0/dns/historical"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domainName": (wrappedValue: domainName.encodeToJSON(), isExplode: true),
             "type": (wrappedValue: type.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
@@ -143,7 +137,6 @@ open class DNSAPI {
     /**
      Live DNS Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter type: (query) all or comma-separated: A,MX,NS,TXT,SOA,SPF,AAAA,CNAME 
      - parameter domainName: (query)  (optional)
      - parameter ipAddress: (query) Use for PTR lookups (optional)
@@ -151,8 +144,8 @@ open class DNSAPI {
      - returns: DnsResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dnsLive(apiKey: String, type: String, domainName: String? = nil, ipAddress: String? = nil, format: Format_dnsLive? = nil) async throws -> DnsResponse {
-        return try await dnsLiveWithRequestBuilder(apiKey: apiKey, type: type, domainName: domainName, ipAddress: ipAddress, format: format).execute().body
+    open class func dnsLive(type: String, domainName: String? = nil, ipAddress: String? = nil, format: Format_dnsLive? = nil) async throws -> DnsResponse {
+        return try await dnsLiveWithRequestBuilder(type: type, domainName: domainName, ipAddress: ipAddress, format: format).execute().body
     }
 
     /**
@@ -162,21 +155,19 @@ open class DNSAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter type: (query) all or comma-separated: A,MX,NS,TXT,SOA,SPF,AAAA,CNAME 
      - parameter domainName: (query)  (optional)
      - parameter ipAddress: (query) Use for PTR lookups (optional)
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<DnsResponse> 
      */
-    open class func dnsLiveWithRequestBuilder(apiKey: String, type: String, domainName: String? = nil, ipAddress: String? = nil, format: Format_dnsLive? = nil) -> RequestBuilder<DnsResponse> {
+    open class func dnsLiveWithRequestBuilder(type: String, domainName: String? = nil, ipAddress: String? = nil, format: Format_dnsLive? = nil) -> RequestBuilder<DnsResponse> {
         let localVariablePath = "/v2.0/dns/live"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domainName": (wrappedValue: domainName?.encodeToJSON(), isExplode: true),
             "ipAddress": (wrappedValue: ipAddress?.encodeToJSON(), isExplode: true),
             "type": (wrappedValue: type.encodeToJSON(), isExplode: true),
@@ -218,7 +209,6 @@ open class DNSAPI {
     /**
      Reverse DNS Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter value: (query) IP, CIDR, or record value 
      - parameter type: (query)  
      - parameter exact: (query)  (optional, default to true)
@@ -227,8 +217,8 @@ open class DNSAPI {
      - returns: ReverseDnsResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dnsReverse(apiKey: String, value: String, type: ModelType_dnsReverse, exact: Bool? = nil, page: Int? = nil, format: Format_dnsReverse? = nil) async throws -> ReverseDnsResponse {
-        return try await dnsReverseWithRequestBuilder(apiKey: apiKey, value: value, type: type, exact: exact, page: page, format: format).execute().body
+    open class func dnsReverse(value: String, type: ModelType_dnsReverse, exact: Bool? = nil, page: Int? = nil, format: Format_dnsReverse? = nil) async throws -> ReverseDnsResponse {
+        return try await dnsReverseWithRequestBuilder(value: value, type: type, exact: exact, page: page, format: format).execute().body
     }
 
     /**
@@ -238,7 +228,6 @@ open class DNSAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter value: (query) IP, CIDR, or record value 
      - parameter type: (query)  
      - parameter exact: (query)  (optional, default to true)
@@ -246,14 +235,13 @@ open class DNSAPI {
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<ReverseDnsResponse> 
      */
-    open class func dnsReverseWithRequestBuilder(apiKey: String, value: String, type: ModelType_dnsReverse, exact: Bool? = nil, page: Int? = nil, format: Format_dnsReverse? = nil) -> RequestBuilder<ReverseDnsResponse> {
+    open class func dnsReverseWithRequestBuilder(value: String, type: ModelType_dnsReverse, exact: Bool? = nil, page: Int? = nil, format: Format_dnsReverse? = nil) -> RequestBuilder<ReverseDnsResponse> {
         let localVariablePath = "/v2.1/dns/reverse"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "value": (wrappedValue: value.encodeToJSON(), isExplode: true),
             "type": (wrappedValue: type.encodeToJSON(), isExplode: true),
             "exact": (wrappedValue: exact?.encodeToJSON(), isExplode: true),

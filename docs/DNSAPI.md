@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **dnsBulk**
 ```swift
-    open class func dnsBulk(apiKey: String, type: String, dnsBulkRequest: DnsBulkRequest, format: Format_dnsBulk? = nil, completion: @escaping (_ data: BulkDnsResponse?, _ error: Error?) -> Void)
+    open class func dnsBulk(type: String, dnsBulkRequest: DnsBulkRequest, format: Format_dnsBulk? = nil, completion: @escaping (_ data: BulkDnsResponse?, _ error: Error?) -> Void)
 ```
 
 Bulk DNS Lookup
@@ -24,13 +24,12 @@ Up to 100 domains + 100 IPs in one request.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let type = "type_example" // String |  (default to "all")
 let dnsBulkRequest = dnsBulk_request(domainNames: ["domainNames_example"], ipAddresses: ["ipAddresses_example"]) // DnsBulkRequest | 
 let format = "format_example" // String |  (optional) (default to .json)
 
 // Bulk DNS Lookup
-DNSAPI.dnsBulk(apiKey: apiKey, type: type, dnsBulkRequest: dnsBulkRequest, format: format) { (response, error) in
+DNSAPI.dnsBulk(type: type, dnsBulkRequest: dnsBulkRequest, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,7 +45,6 @@ DNSAPI.dnsBulk(apiKey: apiKey, type: type, dnsBulkRequest: dnsBulkRequest, forma
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **type** | **String** |  | [default to &quot;all&quot;]
  **dnsBulkRequest** | [**DnsBulkRequest**](DnsBulkRequest.md) |  | 
  **format** | **String** |  | [optional] [default to .json]
@@ -68,7 +66,7 @@ Name | Type | Description  | Notes
 
 # **dnsHistorical**
 ```swift
-    open class func dnsHistorical(apiKey: String, domainName: String, type: String, page: Int? = nil, format: Format_dnsHistorical? = nil, completion: @escaping (_ data: HistoricalDnsResponse?, _ error: Error?) -> Void)
+    open class func dnsHistorical(domainName: String, type: String, page: Int? = nil, format: Format_dnsHistorical? = nil, completion: @escaping (_ data: HistoricalDnsResponse?, _ error: Error?) -> Void)
 ```
 
 Historical DNS Lookup
@@ -80,14 +78,13 @@ All historical DNS records. 2 credits per page (100 records/page).
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let domainName = "domainName_example" // String | 
 let type = "type_example" // String |  (default to "all")
 let page = 987 // Int |  (optional) (default to 1)
 let format = "format_example" // String |  (optional) (default to .json)
 
 // Historical DNS Lookup
-DNSAPI.dnsHistorical(apiKey: apiKey, domainName: domainName, type: type, page: page, format: format) { (response, error) in
+DNSAPI.dnsHistorical(domainName: domainName, type: type, page: page, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -103,7 +100,6 @@ DNSAPI.dnsHistorical(apiKey: apiKey, domainName: domainName, type: type, page: p
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **domainName** | **String** |  | 
  **type** | **String** |  | [default to &quot;all&quot;]
  **page** | **Int** |  | [optional] [default to 1]
@@ -126,7 +122,7 @@ Name | Type | Description  | Notes
 
 # **dnsLive**
 ```swift
-    open class func dnsLive(apiKey: String, type: String, domainName: String? = nil, ipAddress: String? = nil, format: Format_dnsLive? = nil, completion: @escaping (_ data: DnsResponse?, _ error: Error?) -> Void)
+    open class func dnsLive(type: String, domainName: String? = nil, ipAddress: String? = nil, format: Format_dnsLive? = nil, completion: @escaping (_ data: DnsResponse?, _ error: Error?) -> Void)
 ```
 
 Live DNS Lookup
@@ -138,14 +134,13 @@ Real-time DNS record lookup. 1 credit per query.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let type = "type_example" // String | all or comma-separated: A,MX,NS,TXT,SOA,SPF,AAAA,CNAME (default to "all")
 let domainName = "domainName_example" // String |  (optional)
 let ipAddress = "ipAddress_example" // String | Use for PTR lookups (optional)
 let format = "format_example" // String |  (optional) (default to .json)
 
 // Live DNS Lookup
-DNSAPI.dnsLive(apiKey: apiKey, type: type, domainName: domainName, ipAddress: ipAddress, format: format) { (response, error) in
+DNSAPI.dnsLive(type: type, domainName: domainName, ipAddress: ipAddress, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -161,7 +156,6 @@ DNSAPI.dnsLive(apiKey: apiKey, type: type, domainName: domainName, ipAddress: ip
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **type** | **String** | all or comma-separated: A,MX,NS,TXT,SOA,SPF,AAAA,CNAME | [default to &quot;all&quot;]
  **domainName** | **String** |  | [optional] 
  **ipAddress** | **String** | Use for PTR lookups | [optional] 
@@ -184,7 +178,7 @@ Name | Type | Description  | Notes
 
 # **dnsReverse**
 ```swift
-    open class func dnsReverse(apiKey: String, value: String, type: ModelType_dnsReverse, exact: Bool? = nil, page: Int? = nil, format: Format_dnsReverse? = nil, completion: @escaping (_ data: ReverseDnsResponse?, _ error: Error?) -> Void)
+    open class func dnsReverse(value: String, type: ModelType_dnsReverse, exact: Bool? = nil, page: Int? = nil, format: Format_dnsReverse? = nil, completion: @escaping (_ data: ReverseDnsResponse?, _ error: Error?) -> Void)
 ```
 
 Reverse DNS Lookup
@@ -196,7 +190,6 @@ Search domains by IP or DNS value. 5 credits per page.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let value = "value_example" // String | IP, CIDR, or record value
 let type = "type_example" // String | 
 let exact = true // Bool |  (optional) (default to true)
@@ -204,7 +197,7 @@ let page = 987 // Int |  (optional) (default to 1)
 let format = "format_example" // String |  (optional) (default to .json)
 
 // Reverse DNS Lookup
-DNSAPI.dnsReverse(apiKey: apiKey, value: value, type: type, exact: exact, page: page, format: format) { (response, error) in
+DNSAPI.dnsReverse(value: value, type: type, exact: exact, page: page, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -220,7 +213,6 @@ DNSAPI.dnsReverse(apiKey: apiKey, value: value, type: type, exact: exact, page: 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **value** | **String** | IP, CIDR, or record value | 
  **type** | **String** |  | 
  **exact** | **Bool** |  | [optional] [default to true]

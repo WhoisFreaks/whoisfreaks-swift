@@ -23,14 +23,13 @@ open class WHOISAPI {
     /**
      Bulk WHOIS Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter bulkWhoisRequest: (body)  
      - parameter format: (query)  (optional, default to .json)
      - returns: BulkWhoisResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func bulkWhois(apiKey: String, bulkWhoisRequest: BulkWhoisRequest, format: Format_bulkWhois? = nil) async throws -> BulkWhoisResponse {
-        return try await bulkWhoisWithRequestBuilder(apiKey: apiKey, bulkWhoisRequest: bulkWhoisRequest, format: format).execute().body
+    open class func bulkWhois(bulkWhoisRequest: BulkWhoisRequest, format: Format_bulkWhois? = nil) async throws -> BulkWhoisResponse {
+        return try await bulkWhoisWithRequestBuilder(bulkWhoisRequest: bulkWhoisRequest, format: format).execute().body
     }
 
     /**
@@ -40,19 +39,17 @@ open class WHOISAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter bulkWhoisRequest: (body)  
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<BulkWhoisResponse> 
      */
-    open class func bulkWhoisWithRequestBuilder(apiKey: String, bulkWhoisRequest: BulkWhoisRequest, format: Format_bulkWhois? = nil) -> RequestBuilder<BulkWhoisResponse> {
+    open class func bulkWhoisWithRequestBuilder(bulkWhoisRequest: BulkWhoisRequest, format: Format_bulkWhois? = nil) -> RequestBuilder<BulkWhoisResponse> {
         let localVariablePath = "/v2.0/bulkwhois/live"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bulkWhoisRequest)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 
@@ -68,102 +65,6 @@ open class WHOISAPI {
     }
 
     /**
-     * enum for parameter whois
-     */
-    public enum Whois_whoisHistoricalOrReverse: String, CaseIterable {
-        case historical = "historical"
-        case reverse = "reverse"
-    }
-
-    /**
-     * enum for parameter mode
-     */
-    public enum Mode_whoisHistoricalOrReverse: String, CaseIterable {
-        case _default = "default"
-        case mini = "mini"
-    }
-
-    /**
-     * enum for parameter format
-     */
-    public enum Format_whoisHistoricalOrReverse: String, CaseIterable {
-        case json = "json"
-        case xml = "xml"
-    }
-
-    /**
-     WHOIS Historical or Reverse Lookup
-     
-     - parameter apiKey: (query) Your WHOISFreaks API key 
-     - parameter whois: (query)  
-     - parameter domainName: (query) Required for historical lookup (optional)
-     - parameter keyword: (query) For reverse — domain keyword search (optional)
-     - parameter email: (query) For reverse — registrant email search (optional)
-     - parameter owner: (query) For reverse — registrant name search (optional)
-     - parameter company: (query) For reverse — company name search (optional)
-     - parameter mode: (query)  (optional, default to ._default)
-     - parameter exact: (query)  (optional, default to true)
-     - parameter page: (query)  (optional, default to 1)
-     - parameter format: (query)  (optional, default to .json)
-     - returns: WhoisHistoricalResponse
-     */
-    @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func whoisHistoricalOrReverse(apiKey: String, whois: Whois_whoisHistoricalOrReverse, domainName: String? = nil, keyword: String? = nil, email: String? = nil, owner: String? = nil, company: String? = nil, mode: Mode_whoisHistoricalOrReverse? = nil, exact: Bool? = nil, page: Int? = nil, format: Format_whoisHistoricalOrReverse? = nil) async throws -> WhoisHistoricalResponse {
-        return try await whoisHistoricalOrReverseWithRequestBuilder(apiKey: apiKey, whois: whois, domainName: domainName, keyword: keyword, email: email, owner: owner, company: company, mode: mode, exact: exact, page: page, format: format).execute().body
-    }
-
-    /**
-     WHOIS Historical or Reverse Lookup
-     - GET /v1.0/whois
-     - Historical WHOIS (all records since 1986) or Reverse WHOIS (search by keyword/email/owner/company). Historical: 2 credits/page (100 records). Reverse: 5 credits/page.
-     - API Key:
-       - type: apiKey apiKey (QUERY)
-       - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
-     - parameter whois: (query)  
-     - parameter domainName: (query) Required for historical lookup (optional)
-     - parameter keyword: (query) For reverse — domain keyword search (optional)
-     - parameter email: (query) For reverse — registrant email search (optional)
-     - parameter owner: (query) For reverse — registrant name search (optional)
-     - parameter company: (query) For reverse — company name search (optional)
-     - parameter mode: (query)  (optional, default to ._default)
-     - parameter exact: (query)  (optional, default to true)
-     - parameter page: (query)  (optional, default to 1)
-     - parameter format: (query)  (optional, default to .json)
-     - returns: RequestBuilder<WhoisHistoricalResponse> 
-     */
-    open class func whoisHistoricalOrReverseWithRequestBuilder(apiKey: String, whois: Whois_whoisHistoricalOrReverse, domainName: String? = nil, keyword: String? = nil, email: String? = nil, owner: String? = nil, company: String? = nil, mode: Mode_whoisHistoricalOrReverse? = nil, exact: Bool? = nil, page: Int? = nil, format: Format_whoisHistoricalOrReverse? = nil) -> RequestBuilder<WhoisHistoricalResponse> {
-        let localVariablePath = "/v1.0/whois"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
-        let localVariableParameters: [String: Any]? = nil
-
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-            "whois": (wrappedValue: whois.encodeToJSON(), isExplode: true),
-            "domainName": (wrappedValue: domainName?.encodeToJSON(), isExplode: true),
-            "keyword": (wrappedValue: keyword?.encodeToJSON(), isExplode: true),
-            "email": (wrappedValue: email?.encodeToJSON(), isExplode: true),
-            "owner": (wrappedValue: owner?.encodeToJSON(), isExplode: true),
-            "company": (wrappedValue: company?.encodeToJSON(), isExplode: true),
-            "mode": (wrappedValue: mode?.encodeToJSON(), isExplode: true),
-            "exact": (wrappedValue: exact?.encodeToJSON(), isExplode: true),
-            "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
-            "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
-        ])
-
-        let localVariableNillableHeaders: [String: Any?] = [
-            :
-        ]
-
-        let localVariableHeaderParameters = APIHelper.rejectNilHeaders(localVariableNillableHeaders)
-
-        let localVariableRequestBuilder: RequestBuilder<WhoisHistoricalResponse>.Type = WhoisFreaksAPI.requestBuilderFactory.getBuilder()
-
-        return localVariableRequestBuilder.init(method: "GET", URLString: (localVariableUrlComponents?.string ?? localVariableURLString), parameters: localVariableParameters, headers: localVariableHeaderParameters, requiresAuthentication: true)
-    }
-
-    /**
      * enum for parameter format
      */
     public enum Format_whoisHistory: String, CaseIterable {
@@ -174,15 +75,14 @@ open class WHOISAPI {
     /**
      Historical WHOIS records for a domain
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query) Domain to fetch historical WHOIS records for 
      - parameter page: (query) Page number (optional)
      - parameter format: (query)  (optional)
      - returns: WhoisHistoricalResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func whoisHistory(apiKey: String, domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil) async throws -> WhoisHistoricalResponse {
-        return try await whoisHistoryWithRequestBuilder(apiKey: apiKey, domainName: domainName, page: page, format: format).execute().body
+    open class func whoisHistory(domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil) async throws -> WhoisHistoricalResponse {
+        return try await whoisHistoryWithRequestBuilder(domainName: domainName, page: page, format: format).execute().body
     }
 
     /**
@@ -191,20 +91,18 @@ open class WHOISAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query) Domain to fetch historical WHOIS records for 
      - parameter page: (query) Page number (optional)
      - parameter format: (query)  (optional)
      - returns: RequestBuilder<WhoisHistoricalResponse> 
      */
-    open class func whoisHistoryWithRequestBuilder(apiKey: String, domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil) -> RequestBuilder<WhoisHistoricalResponse> {
+    open class func whoisHistoryWithRequestBuilder(domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil) -> RequestBuilder<WhoisHistoricalResponse> {
         let localVariablePath = "/v2.0/whois/history"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domainName": (wrappedValue: domainName.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
@@ -232,14 +130,13 @@ open class WHOISAPI {
     /**
      Live WHOIS Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query)  
      - parameter format: (query)  (optional, default to .json)
      - returns: WhoisResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func whoisLive(apiKey: String, domainName: String, format: Format_whoisLive? = nil) async throws -> WhoisResponse {
-        return try await whoisLiveWithRequestBuilder(apiKey: apiKey, domainName: domainName, format: format).execute().body
+    open class func whoisLive(domainName: String, format: Format_whoisLive? = nil) async throws -> WhoisResponse {
+        return try await whoisLiveWithRequestBuilder(domainName: domainName, format: format).execute().body
     }
 
     /**
@@ -249,19 +146,17 @@ open class WHOISAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domainName: (query)  
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<WhoisResponse> 
      */
-    open class func whoisLiveWithRequestBuilder(apiKey: String, domainName: String, format: Format_whoisLive? = nil) -> RequestBuilder<WhoisResponse> {
+    open class func whoisLiveWithRequestBuilder(domainName: String, format: Format_whoisLive? = nil) -> RequestBuilder<WhoisResponse> {
         let localVariablePath = "/v2.0/whois/live"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domainName": (wrappedValue: domainName.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
@@ -288,15 +183,14 @@ open class WHOISAPI {
     /**
      Reverse WHOIS lookup by keyword
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter keyword: (query) Keyword to search across WHOIS records 
      - parameter page: (query) Page number (optional)
      - parameter format: (query)  (optional)
      - returns: ReverseWhoisResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func whoisReverse(apiKey: String, keyword: String, page: Int? = nil, format: Format_whoisReverse? = nil) async throws -> ReverseWhoisResponse {
-        return try await whoisReverseWithRequestBuilder(apiKey: apiKey, keyword: keyword, page: page, format: format).execute().body
+    open class func whoisReverse(keyword: String, page: Int? = nil, format: Format_whoisReverse? = nil) async throws -> ReverseWhoisResponse {
+        return try await whoisReverseWithRequestBuilder(keyword: keyword, page: page, format: format).execute().body
     }
 
     /**
@@ -305,20 +199,18 @@ open class WHOISAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter keyword: (query) Keyword to search across WHOIS records 
      - parameter page: (query) Page number (optional)
      - parameter format: (query)  (optional)
      - returns: RequestBuilder<ReverseWhoisResponse> 
      */
-    open class func whoisReverseWithRequestBuilder(apiKey: String, keyword: String, page: Int? = nil, format: Format_whoisReverse? = nil) -> RequestBuilder<ReverseWhoisResponse> {
+    open class func whoisReverseWithRequestBuilder(keyword: String, page: Int? = nil, format: Format_whoisReverse? = nil) -> RequestBuilder<ReverseWhoisResponse> {
         let localVariablePath = "/v2.0/whois/reverse"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "keyword": (wrappedValue: keyword.encodeToJSON(), isExplode: true),
             "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),

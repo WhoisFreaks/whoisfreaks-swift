@@ -31,7 +31,6 @@ open class SubdomainsAPI {
     /**
      Subdomains Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domain: (query)  
      - parameter after: (query)  (optional)
      - parameter before: (query)  (optional)
@@ -41,8 +40,8 @@ open class SubdomainsAPI {
      - returns: SubdomainsResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func subdomains(apiKey: String, domain: String, after: Date? = nil, before: Date? = nil, status: Status_subdomains? = nil, page: Int? = nil, format: Format_subdomains? = nil) async throws -> SubdomainsResponse {
-        return try await subdomainsWithRequestBuilder(apiKey: apiKey, domain: domain, after: after, before: before, status: status, page: page, format: format).execute().body
+    open class func subdomains(domain: String, after: Date? = nil, before: Date? = nil, status: Status_subdomains? = nil, page: Int? = nil, format: Format_subdomains? = nil) async throws -> SubdomainsResponse {
+        return try await subdomainsWithRequestBuilder(domain: domain, after: after, before: before, status: status, page: page, format: format).execute().body
     }
 
     /**
@@ -52,7 +51,6 @@ open class SubdomainsAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domain: (query)  
      - parameter after: (query)  (optional)
      - parameter before: (query)  (optional)
@@ -61,14 +59,13 @@ open class SubdomainsAPI {
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<SubdomainsResponse> 
      */
-    open class func subdomainsWithRequestBuilder(apiKey: String, domain: String, after: Date? = nil, before: Date? = nil, status: Status_subdomains? = nil, page: Int? = nil, format: Format_subdomains? = nil) -> RequestBuilder<SubdomainsResponse> {
+    open class func subdomainsWithRequestBuilder(domain: String, after: Date? = nil, before: Date? = nil, status: Status_subdomains? = nil, page: Int? = nil, format: Format_subdomains? = nil) -> RequestBuilder<SubdomainsResponse> {
         let localVariablePath = "/v1.0/subdomains"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domain": (wrappedValue: domain.encodeToJSON(), isExplode: true),
             "after": (wrappedValue: after?.encodeToJSON(), isExplode: true),
             "before": (wrappedValue: before?.encodeToJSON(), isExplode: true),

@@ -15,13 +15,12 @@ open class DatabasesIPSecurityAPI {
     /**
      IP Security Snapshot
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query)  
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbIpSecurity(apiKey: String, date: Date) async throws -> URL {
-        return try await dbIpSecurityWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbIpSecurity(date: Date) async throws -> URL {
+        return try await dbIpSecurityWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -31,18 +30,16 @@ open class DatabasesIPSecurityAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query)  
      - returns: RequestBuilder<URL> 
      */
-    open class func dbIpSecurityWithRequestBuilder(apiKey: String, date: Date) -> RequestBuilder<URL> {
+    open class func dbIpSecurityWithRequestBuilder(date: Date) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/snapshot/ip/security"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date.encodeToJSON(), isExplode: true),
         ])
 
@@ -60,12 +57,11 @@ open class DatabasesIPSecurityAPI {
     /**
      IP Security Snapshot Status
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: SnapshotStatus
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbIpSecurityStatus(apiKey: String) async throws -> SnapshotStatus {
-        return try await dbIpSecurityStatusWithRequestBuilder(apiKey: apiKey).execute().body
+    open class func dbIpSecurityStatus() async throws -> SnapshotStatus {
+        return try await dbIpSecurityStatusWithRequestBuilder().execute().body
     }
 
     /**
@@ -75,18 +71,14 @@ open class DatabasesIPSecurityAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: RequestBuilder<SnapshotStatus> 
      */
-    open class func dbIpSecurityStatusWithRequestBuilder(apiKey: String) -> RequestBuilder<SnapshotStatus> {
+    open class func dbIpSecurityStatusWithRequestBuilder() -> RequestBuilder<SnapshotStatus> {
         let localVariablePath = "/v3.3/status/snapshot/ip/security"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             :

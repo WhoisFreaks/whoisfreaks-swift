@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **dbSubdomainsDaily**
 ```swift
-    open class func dbSubdomainsDaily(apiKey: String, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbSubdomainsDaily(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Subdomains Daily
@@ -23,11 +23,10 @@ Subdomains Daily. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Subdomains Daily
-DatabasesSubdomainsAPI.dbSubdomainsDaily(apiKey: apiKey, date: date) { (response, error) in
+DatabasesSubdomainsAPI.dbSubdomainsDaily(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -43,7 +42,6 @@ DatabasesSubdomainsAPI.dbSubdomainsDaily(apiKey: apiKey, date: date) { (response
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
@@ -63,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **dbSubdomainsMonthly**
 ```swift
-    open class func dbSubdomainsMonthly(apiKey: String, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbSubdomainsMonthly(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Subdomains Monthly
@@ -75,11 +73,10 @@ Subdomains Monthly. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Subdomains Monthly
-DatabasesSubdomainsAPI.dbSubdomainsMonthly(apiKey: apiKey, date: date) { (response, error) in
+DatabasesSubdomainsAPI.dbSubdomainsMonthly(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -95,7 +92,6 @@ DatabasesSubdomainsAPI.dbSubdomainsMonthly(apiKey: apiKey, date: date) { (respon
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
@@ -115,7 +111,7 @@ Name | Type | Description  | Notes
 
 # **dbSubdomainsWeekly**
 ```swift
-    open class func dbSubdomainsWeekly(apiKey: String, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbSubdomainsWeekly(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Subdomains Weekly
@@ -127,11 +123,10 @@ Subdomains Weekly. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Subdomains Weekly
-DatabasesSubdomainsAPI.dbSubdomainsWeekly(apiKey: apiKey, date: date) { (response, error) in
+DatabasesSubdomainsAPI.dbSubdomainsWeekly(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -147,7 +142,6 @@ DatabasesSubdomainsAPI.dbSubdomainsWeekly(apiKey: apiKey, date: date) { (respons
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type

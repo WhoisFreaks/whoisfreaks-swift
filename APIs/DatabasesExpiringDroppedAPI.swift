@@ -15,14 +15,13 @@ open class DatabasesExpiringDroppedAPI {
     /**
      Dropped Domains
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbDropped(apiKey: String, whois: Bool, date: Date? = nil) async throws -> URL {
-        return try await dbDroppedWithRequestBuilder(apiKey: apiKey, whois: whois, date: date).execute().body
+    open class func dbDropped(whois: Bool, date: Date? = nil) async throws -> URL {
+        return try await dbDroppedWithRequestBuilder(whois: whois, date: date).execute().body
     }
 
     /**
@@ -32,19 +31,17 @@ open class DatabasesExpiringDroppedAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbDroppedWithRequestBuilder(apiKey: String, whois: Bool, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbDroppedWithRequestBuilder(whois: Bool, date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/dropped"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "whois": (wrappedValue: whois.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
@@ -63,14 +60,13 @@ open class DatabasesExpiringDroppedAPI {
     /**
      Dropped With Backlinks
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  (optional)
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbDroppedBacklinks(apiKey: String, whois: Bool? = nil, date: Date? = nil) async throws -> URL {
-        return try await dbDroppedBacklinksWithRequestBuilder(apiKey: apiKey, whois: whois, date: date).execute().body
+    open class func dbDroppedBacklinks(whois: Bool? = nil, date: Date? = nil) async throws -> URL {
+        return try await dbDroppedBacklinksWithRequestBuilder(whois: whois, date: date).execute().body
     }
 
     /**
@@ -80,19 +76,17 @@ open class DatabasesExpiringDroppedAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  (optional)
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbDroppedBacklinksWithRequestBuilder(apiKey: String, whois: Bool? = nil, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbDroppedBacklinksWithRequestBuilder(whois: Bool? = nil, date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/domainer/dropped/backlinks"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "whois": (wrappedValue: whois?.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
@@ -111,14 +105,13 @@ open class DatabasesExpiringDroppedAPI {
     /**
      Dropped Domains (JSON)
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: [String]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbDroppedJson(apiKey: String, date: Date? = nil, tlds: String? = nil) async throws -> [String] {
-        return try await dbDroppedJsonWithRequestBuilder(apiKey: apiKey, date: date, tlds: tlds).execute().body
+    open class func dbDroppedJson(date: Date? = nil, tlds: String? = nil) async throws -> [String] {
+        return try await dbDroppedJsonWithRequestBuilder(date: date, tlds: tlds).execute().body
     }
 
     /**
@@ -128,19 +121,17 @@ open class DatabasesExpiringDroppedAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<[String]> 
      */
-    open class func dbDroppedJsonWithRequestBuilder(apiKey: String, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
+    open class func dbDroppedJsonWithRequestBuilder(date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
         let localVariablePath = "/v3.1/domains/dropped"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
             "tlds": (wrappedValue: tlds?.encodeToJSON(), isExplode: true),
         ])
@@ -159,14 +150,13 @@ open class DatabasesExpiringDroppedAPI {
     /**
      Expiring Domains
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbExpired(apiKey: String, whois: Bool, date: Date? = nil) async throws -> URL {
-        return try await dbExpiredWithRequestBuilder(apiKey: apiKey, whois: whois, date: date).execute().body
+    open class func dbExpired(whois: Bool, date: Date? = nil) async throws -> URL {
+        return try await dbExpiredWithRequestBuilder(whois: whois, date: date).execute().body
     }
 
     /**
@@ -176,19 +166,17 @@ open class DatabasesExpiringDroppedAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter whois: (query)  
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbExpiredWithRequestBuilder(apiKey: String, whois: Bool, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbExpiredWithRequestBuilder(whois: Bool, date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/expired"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "whois": (wrappedValue: whois.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
@@ -207,13 +195,12 @@ open class DatabasesExpiringDroppedAPI {
     /**
      Expiring Cleaned WHOIS
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbExpiredCleaned(apiKey: String, date: Date? = nil) async throws -> URL {
-        return try await dbExpiredCleanedWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbExpiredCleaned(date: Date? = nil) async throws -> URL {
+        return try await dbExpiredCleanedWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -223,18 +210,16 @@ open class DatabasesExpiringDroppedAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbExpiredCleanedWithRequestBuilder(apiKey: String, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbExpiredCleanedWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/expired/cleaned"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date?.encodeToJSON(), isExplode: true),
         ])
 

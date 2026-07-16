@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **accountUsage**
 ```swift
-    open class func accountUsage(apiKey: String, completion: @escaping (_ data: AccountUsageResponse?, _ error: Error?) -> Void)
+    open class func accountUsage(completion: @escaping (_ data: AccountUsageResponse?, _ error: Error?) -> Void)
 ```
 
 Account Usage
@@ -23,10 +23,9 @@ Account Usage. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 
 // Account Usage
-AccountAPI.accountUsage(apiKey: apiKey) { (response, error) in
+AccountAPI.accountUsage() { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -39,10 +38,7 @@ AccountAPI.accountUsage(apiKey: apiKey) { (response, error) in
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -107,7 +103,7 @@ No authorization required
 
 # **rotateApiKey**
 ```swift
-    open class func rotateApiKey(apiKey: String, completion: @escaping (_ data: String?, _ error: Error?) -> Void)
+    open class func rotateApiKey(completion: @escaping (_ data: String?, _ error: Error?) -> Void)
 ```
 
 Rotate API Key
@@ -119,10 +115,9 @@ Rotate API Key. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 
 // Rotate API Key
-AccountAPI.rotateApiKey(apiKey: apiKey) { (response, error) in
+AccountAPI.rotateApiKey() { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -135,10 +130,7 @@ AccountAPI.rotateApiKey(apiKey: apiKey) { (response, error) in
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
+This endpoint does not need any parameter.
 
 ### Return type
 

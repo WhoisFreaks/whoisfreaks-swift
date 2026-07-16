@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **dbNewlyCctld**
 ```swift
-    open class func dbNewlyCctld(apiKey: String, whois: Bool, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyCctld(whois: Bool, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered ccTLD (CSV)
@@ -27,13 +27,12 @@ Newly Registered ccTLD (CSV). Returns the file/snapshot described by this operat
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let whois = true // Bool | 
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Newly Registered ccTLD (CSV)
-DatabasesNewlyRegisteredAPI.dbNewlyCctld(apiKey: apiKey, whois: whois, date: date, tlds: tlds) { (response, error) in
+DatabasesNewlyRegisteredAPI.dbNewlyCctld(whois: whois, date: date, tlds: tlds) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -49,7 +48,6 @@ DatabasesNewlyRegisteredAPI.dbNewlyCctld(apiKey: apiKey, whois: whois, date: dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **whois** | **Bool** |  | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
@@ -71,7 +69,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyCctldCleaned**
 ```swift
-    open class func dbNewlyCctldCleaned(apiKey: String, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyCctldCleaned(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered ccTLD Cleaned WHOIS (CSV)
@@ -83,11 +81,10 @@ Newly Registered ccTLD Cleaned WHOIS (CSV). Returns the file/snapshot described 
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Newly Registered ccTLD Cleaned WHOIS (CSV)
-DatabasesNewlyRegisteredAPI.dbNewlyCctldCleaned(apiKey: apiKey, date: date) { (response, error) in
+DatabasesNewlyRegisteredAPI.dbNewlyCctldCleaned(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -103,7 +100,6 @@ DatabasesNewlyRegisteredAPI.dbNewlyCctldCleaned(apiKey: apiKey, date: date) { (r
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
@@ -123,7 +119,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyCctldJson**
 ```swift
-    open class func dbNewlyCctldJson(apiKey: String, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func dbNewlyCctldJson(date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
 ```
 
 Newly Registered ccTLD (JSON)
@@ -135,12 +131,11 @@ Newly Registered ccTLD (JSON). Returns the file/snapshot described by this opera
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Newly Registered ccTLD (JSON)
-DatabasesNewlyRegisteredAPI.dbNewlyCctldJson(apiKey: apiKey, date: date, tlds: tlds) { (response, error) in
+DatabasesNewlyRegisteredAPI.dbNewlyCctldJson(date: date, tlds: tlds) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -156,7 +151,6 @@ DatabasesNewlyRegisteredAPI.dbNewlyCctldJson(apiKey: apiKey, date: date, tlds: t
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
 
@@ -177,7 +171,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyDns**
 ```swift
-    open class func dbNewlyDns(apiKey: String, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyDns(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered With DNS
@@ -189,11 +183,10 @@ Newly Registered With DNS. Returns the file/snapshot described by this operation
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Newly Registered With DNS
-DatabasesNewlyRegisteredAPI.dbNewlyDns(apiKey: apiKey, date: date) { (response, error) in
+DatabasesNewlyRegisteredAPI.dbNewlyDns(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -209,7 +202,6 @@ DatabasesNewlyRegisteredAPI.dbNewlyDns(apiKey: apiKey, date: date) { (response, 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
@@ -229,7 +221,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyGtld**
 ```swift
-    open class func dbNewlyGtld(apiKey: String, whois: Bool, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyGtld(whois: Bool, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered gTLD (CSV)
@@ -241,13 +233,12 @@ Newly Registered gTLD (CSV). Returns the file/snapshot described by this operati
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let whois = true // Bool | 
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Newly Registered gTLD (CSV)
-DatabasesNewlyRegisteredAPI.dbNewlyGtld(apiKey: apiKey, whois: whois, date: date, tlds: tlds) { (response, error) in
+DatabasesNewlyRegisteredAPI.dbNewlyGtld(whois: whois, date: date, tlds: tlds) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -263,7 +254,6 @@ DatabasesNewlyRegisteredAPI.dbNewlyGtld(apiKey: apiKey, whois: whois, date: date
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **whois** | **Bool** |  | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
@@ -285,7 +275,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyGtldCleaned**
 ```swift
-    open class func dbNewlyGtldCleaned(apiKey: String, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyGtldCleaned(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered gTLD Cleaned WHOIS (CSV)
@@ -297,11 +287,10 @@ Newly Registered gTLD Cleaned WHOIS (CSV). Returns the file/snapshot described b
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Newly Registered gTLD Cleaned WHOIS (CSV)
-DatabasesNewlyRegisteredAPI.dbNewlyGtldCleaned(apiKey: apiKey, date: date) { (response, error) in
+DatabasesNewlyRegisteredAPI.dbNewlyGtldCleaned(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -317,7 +306,6 @@ DatabasesNewlyRegisteredAPI.dbNewlyGtldCleaned(apiKey: apiKey, date: date) { (re
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
@@ -337,7 +325,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyGtldJson**
 ```swift
-    open class func dbNewlyGtldJson(apiKey: String, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func dbNewlyGtldJson(date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
 ```
 
 Newly Registered gTLD (JSON)
@@ -349,12 +337,11 @@ Newly Registered gTLD (JSON). Returns the file/snapshot described by this operat
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Newly Registered gTLD (JSON)
-DatabasesNewlyRegisteredAPI.dbNewlyGtldJson(apiKey: apiKey, date: date, tlds: tlds) { (response, error) in
+DatabasesNewlyRegisteredAPI.dbNewlyGtldJson(date: date, tlds: tlds) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -370,7 +357,6 @@ DatabasesNewlyRegisteredAPI.dbNewlyGtldJson(apiKey: apiKey, date: date, tlds: tl
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
 

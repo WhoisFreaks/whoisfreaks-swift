@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **bulkIpReputation**
 ```swift
-    open class func bulkIpReputation(apiKey: String, bulkGeolocationRequest: BulkGeolocationRequest, completion: @escaping (_ data: [IpReputationResponse]?, _ error: Error?) -> Void)
+    open class func bulkIpReputation(bulkGeolocationRequest: BulkGeolocationRequest, completion: @escaping (_ data: [IpReputationResponse]?, _ error: Error?) -> Void)
 ```
 
 Bulk IP Reputation
@@ -22,11 +22,10 @@ Up to 100 IPs.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let bulkGeolocationRequest = bulkGeolocation_request(ips: ["ips_example"]) // BulkGeolocationRequest | 
 
 // Bulk IP Reputation
-IPReputationAPI.bulkIpReputation(apiKey: apiKey, bulkGeolocationRequest: bulkGeolocationRequest) { (response, error) in
+IPReputationAPI.bulkIpReputation(bulkGeolocationRequest: bulkGeolocationRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -42,7 +41,6 @@ IPReputationAPI.bulkIpReputation(apiKey: apiKey, bulkGeolocationRequest: bulkGeo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **bulkGeolocationRequest** | [**BulkGeolocationRequest**](BulkGeolocationRequest.md) |  | 
 
 ### Return type
@@ -62,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **ipReputation**
 ```swift
-    open class func ipReputation(apiKey: String, ip: String, completion: @escaping (_ data: IpReputationResponse?, _ error: Error?) -> Void)
+    open class func ipReputation(ip: String, completion: @escaping (_ data: IpReputationResponse?, _ error: Error?) -> Void)
 ```
 
 IP Reputation Lookup
@@ -74,11 +72,10 @@ Threat intel for IP — VPN, proxy, Tor, bots. 1 credit.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let ip = "ip_example" // String | 
 
 // IP Reputation Lookup
-IPReputationAPI.ipReputation(apiKey: apiKey, ip: ip) { (response, error) in
+IPReputationAPI.ipReputation(ip: ip) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -94,7 +91,6 @@ IPReputationAPI.ipReputation(apiKey: apiKey, ip: ip) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **ip** | **String** |  | 
 
 ### Return type

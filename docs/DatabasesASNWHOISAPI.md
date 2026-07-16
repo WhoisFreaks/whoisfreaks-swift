@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **dbAsnWhois**
 ```swift
-    open class func dbAsnWhois(apiKey: String, date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbAsnWhois(date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 ASN WHOIS Snapshot
@@ -22,11 +22,10 @@ ASN WHOIS Snapshot. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | 
 
 // ASN WHOIS Snapshot
-DatabasesASNWHOISAPI.dbAsnWhois(apiKey: apiKey, date: date) { (response, error) in
+DatabasesASNWHOISAPI.dbAsnWhois(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -42,7 +41,6 @@ DatabasesASNWHOISAPI.dbAsnWhois(apiKey: apiKey, date: date) { (response, error) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** |  | 
 
 ### Return type
@@ -62,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **dbAsnWhoisStatus**
 ```swift
-    open class func dbAsnWhoisStatus(apiKey: String, completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
+    open class func dbAsnWhoisStatus(completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
 ```
 
 ASN WHOIS Snapshot Status
@@ -74,10 +72,9 @@ ASN WHOIS Snapshot Status. Returns the file/snapshot described by this operation
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 
 // ASN WHOIS Snapshot Status
-DatabasesASNWHOISAPI.dbAsnWhoisStatus(apiKey: apiKey) { (response, error) in
+DatabasesASNWHOISAPI.dbAsnWhoisStatus() { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -90,10 +87,7 @@ DatabasesASNWHOISAPI.dbAsnWhoisStatus(apiKey: apiKey) { (response, error) in
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
+This endpoint does not need any parameter.
 
 ### Return type
 

@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **dbIpSecurity**
 ```swift
-    open class func dbIpSecurity(apiKey: String, date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbIpSecurity(date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 IP Security Snapshot
@@ -22,11 +22,10 @@ IP Security Snapshot. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | 
 
 // IP Security Snapshot
-DatabasesIPSecurityAPI.dbIpSecurity(apiKey: apiKey, date: date) { (response, error) in
+DatabasesIPSecurityAPI.dbIpSecurity(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -42,7 +41,6 @@ DatabasesIPSecurityAPI.dbIpSecurity(apiKey: apiKey, date: date) { (response, err
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** |  | 
 
 ### Return type
@@ -62,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **dbIpSecurityStatus**
 ```swift
-    open class func dbIpSecurityStatus(apiKey: String, completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
+    open class func dbIpSecurityStatus(completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
 ```
 
 IP Security Snapshot Status
@@ -74,10 +72,9 @@ IP Security Snapshot Status. Returns the file/snapshot described by this operati
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 
 // IP Security Snapshot Status
-DatabasesIPSecurityAPI.dbIpSecurityStatus(apiKey: apiKey) { (response, error) in
+DatabasesIPSecurityAPI.dbIpSecurityStatus() { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -90,10 +87,7 @@ DatabasesIPSecurityAPI.dbIpSecurityStatus(apiKey: apiKey) { (response, error) in
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
+This endpoint does not need any parameter.
 
 ### Return type
 

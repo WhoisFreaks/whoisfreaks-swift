@@ -15,13 +15,12 @@ open class GeolocationAPI {
     /**
      Bulk IP Geolocation
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter bulkGeolocationRequest: (body)  
      - returns: [GeolocationResponse]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func bulkGeolocation(apiKey: String, bulkGeolocationRequest: BulkGeolocationRequest) async throws -> [GeolocationResponse] {
-        return try await bulkGeolocationWithRequestBuilder(apiKey: apiKey, bulkGeolocationRequest: bulkGeolocationRequest).execute().body
+    open class func bulkGeolocation(bulkGeolocationRequest: BulkGeolocationRequest) async throws -> [GeolocationResponse] {
+        return try await bulkGeolocationWithRequestBuilder(bulkGeolocationRequest: bulkGeolocationRequest).execute().body
     }
 
     /**
@@ -31,19 +30,15 @@ open class GeolocationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter bulkGeolocationRequest: (body)  
      - returns: RequestBuilder<[GeolocationResponse]> 
      */
-    open class func bulkGeolocationWithRequestBuilder(apiKey: String, bulkGeolocationRequest: BulkGeolocationRequest) -> RequestBuilder<[GeolocationResponse]> {
+    open class func bulkGeolocationWithRequestBuilder(bulkGeolocationRequest: BulkGeolocationRequest) -> RequestBuilder<[GeolocationResponse]> {
         let localVariablePath = "/v1.0/geolocation"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bulkGeolocationRequest)
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             "Content-Type": "application/json",
@@ -59,13 +54,12 @@ open class GeolocationAPI {
     /**
      IP Geolocation Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter ip: (query)  
      - returns: GeolocationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func geolocation(apiKey: String, ip: String) async throws -> GeolocationResponse {
-        return try await geolocationWithRequestBuilder(apiKey: apiKey, ip: ip).execute().body
+    open class func geolocation(ip: String) async throws -> GeolocationResponse {
+        return try await geolocationWithRequestBuilder(ip: ip).execute().body
     }
 
     /**
@@ -75,18 +69,16 @@ open class GeolocationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter ip: (query)  
      - returns: RequestBuilder<GeolocationResponse> 
      */
-    open class func geolocationWithRequestBuilder(apiKey: String, ip: String) -> RequestBuilder<GeolocationResponse> {
+    open class func geolocationWithRequestBuilder(ip: String) -> RequestBuilder<GeolocationResponse> {
         let localVariablePath = "/v1.0/geolocation"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "ip": (wrappedValue: ip.encodeToJSON(), isExplode: true),
         ])
 

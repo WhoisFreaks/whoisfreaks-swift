@@ -15,13 +15,12 @@ open class DatabasesIPGeolocationAPI {
     /**
      IP to City Snapshot
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query)  
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbIpCity(apiKey: String, date: Date) async throws -> URL {
-        return try await dbIpCityWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbIpCity(date: Date) async throws -> URL {
+        return try await dbIpCityWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -31,18 +30,16 @@ open class DatabasesIPGeolocationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query)  
      - returns: RequestBuilder<URL> 
      */
-    open class func dbIpCityWithRequestBuilder(apiKey: String, date: Date) -> RequestBuilder<URL> {
+    open class func dbIpCityWithRequestBuilder(date: Date) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/snapshot/ip/city"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date.encodeToJSON(), isExplode: true),
         ])
 
@@ -60,12 +57,11 @@ open class DatabasesIPGeolocationAPI {
     /**
      IP to City Snapshot Status
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: SnapshotStatus
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbIpCityStatus(apiKey: String) async throws -> SnapshotStatus {
-        return try await dbIpCityStatusWithRequestBuilder(apiKey: apiKey).execute().body
+    open class func dbIpCityStatus() async throws -> SnapshotStatus {
+        return try await dbIpCityStatusWithRequestBuilder().execute().body
     }
 
     /**
@@ -75,18 +71,14 @@ open class DatabasesIPGeolocationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: RequestBuilder<SnapshotStatus> 
      */
-    open class func dbIpCityStatusWithRequestBuilder(apiKey: String) -> RequestBuilder<SnapshotStatus> {
+    open class func dbIpCityStatusWithRequestBuilder() -> RequestBuilder<SnapshotStatus> {
         let localVariablePath = "/v3.3/status/snapshot/ip/city"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -102,13 +94,12 @@ open class DatabasesIPGeolocationAPI {
     /**
      IP to Country Snapshot
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query)  
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbIpCountry(apiKey: String, date: Date) async throws -> URL {
-        return try await dbIpCountryWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbIpCountry(date: Date) async throws -> URL {
+        return try await dbIpCountryWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -118,18 +109,16 @@ open class DatabasesIPGeolocationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query)  
      - returns: RequestBuilder<URL> 
      */
-    open class func dbIpCountryWithRequestBuilder(apiKey: String, date: Date) -> RequestBuilder<URL> {
+    open class func dbIpCountryWithRequestBuilder(date: Date) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/snapshot/ip/country"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date.encodeToJSON(), isExplode: true),
         ])
 
@@ -147,12 +136,11 @@ open class DatabasesIPGeolocationAPI {
     /**
      IP to Country Snapshot Status
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: SnapshotStatus
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbIpCountryStatus(apiKey: String) async throws -> SnapshotStatus {
-        return try await dbIpCountryStatusWithRequestBuilder(apiKey: apiKey).execute().body
+    open class func dbIpCountryStatus() async throws -> SnapshotStatus {
+        return try await dbIpCountryStatusWithRequestBuilder().execute().body
     }
 
     /**
@@ -162,18 +150,14 @@ open class DatabasesIPGeolocationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: RequestBuilder<SnapshotStatus> 
      */
-    open class func dbIpCountryStatusWithRequestBuilder(apiKey: String) -> RequestBuilder<SnapshotStatus> {
+    open class func dbIpCountryStatusWithRequestBuilder() -> RequestBuilder<SnapshotStatus> {
         let localVariablePath = "/v3.3/status/snapshot/ip/country"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             :

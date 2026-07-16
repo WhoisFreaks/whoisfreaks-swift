@@ -15,13 +15,12 @@ open class DatabasesASNWHOISAPI {
     /**
      ASN WHOIS Snapshot
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query)  
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbAsnWhois(apiKey: String, date: Date) async throws -> URL {
-        return try await dbAsnWhoisWithRequestBuilder(apiKey: apiKey, date: date).execute().body
+    open class func dbAsnWhois(date: Date) async throws -> URL {
+        return try await dbAsnWhoisWithRequestBuilder(date: date).execute().body
     }
 
     /**
@@ -31,18 +30,16 @@ open class DatabasesASNWHOISAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter date: (query)  
      - returns: RequestBuilder<URL> 
      */
-    open class func dbAsnWhoisWithRequestBuilder(apiKey: String, date: Date) -> RequestBuilder<URL> {
+    open class func dbAsnWhoisWithRequestBuilder(date: Date) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/snapshot/asn/whois"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "date": (wrappedValue: date.encodeToJSON(), isExplode: true),
         ])
 
@@ -60,12 +57,11 @@ open class DatabasesASNWHOISAPI {
     /**
      ASN WHOIS Snapshot Status
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: SnapshotStatus
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbAsnWhoisStatus(apiKey: String) async throws -> SnapshotStatus {
-        return try await dbAsnWhoisStatusWithRequestBuilder(apiKey: apiKey).execute().body
+    open class func dbAsnWhoisStatus() async throws -> SnapshotStatus {
+        return try await dbAsnWhoisStatusWithRequestBuilder().execute().body
     }
 
     /**
@@ -75,18 +71,14 @@ open class DatabasesASNWHOISAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: RequestBuilder<SnapshotStatus> 
      */
-    open class func dbAsnWhoisStatusWithRequestBuilder(apiKey: String) -> RequestBuilder<SnapshotStatus> {
+    open class func dbAsnWhoisStatusWithRequestBuilder() -> RequestBuilder<SnapshotStatus> {
         let localVariablePath = "/v3.3/status/snapshot/asn/whois"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             :

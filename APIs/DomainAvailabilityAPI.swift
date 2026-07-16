@@ -23,15 +23,14 @@ open class DomainAvailabilityAPI {
     /**
      Bulk Domain Availability Check
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter bulkDomainAvailabilityRequest: (body)  
      - parameter domain: (query) Required for TLD-mode bulk check (base domain). (optional)
      - parameter format: (query)  (optional, default to .json)
      - returns: BulkDomainAvailabilityResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func bulkDomainAvailabilityV2(apiKey: String, bulkDomainAvailabilityRequest: BulkDomainAvailabilityRequest, domain: String? = nil, format: Format_bulkDomainAvailabilityV2? = nil) async throws -> BulkDomainAvailabilityResponse {
-        return try await bulkDomainAvailabilityV2WithRequestBuilder(apiKey: apiKey, bulkDomainAvailabilityRequest: bulkDomainAvailabilityRequest, domain: domain, format: format).execute().body
+    open class func bulkDomainAvailabilityV2(bulkDomainAvailabilityRequest: BulkDomainAvailabilityRequest, domain: String? = nil, format: Format_bulkDomainAvailabilityV2? = nil) async throws -> BulkDomainAvailabilityResponse {
+        return try await bulkDomainAvailabilityV2WithRequestBuilder(bulkDomainAvailabilityRequest: bulkDomainAvailabilityRequest, domain: domain, format: format).execute().body
     }
 
     /**
@@ -41,20 +40,18 @@ open class DomainAvailabilityAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter bulkDomainAvailabilityRequest: (body)  
      - parameter domain: (query) Required for TLD-mode bulk check (base domain). (optional)
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<BulkDomainAvailabilityResponse> 
      */
-    open class func bulkDomainAvailabilityV2WithRequestBuilder(apiKey: String, bulkDomainAvailabilityRequest: BulkDomainAvailabilityRequest, domain: String? = nil, format: Format_bulkDomainAvailabilityV2? = nil) -> RequestBuilder<BulkDomainAvailabilityResponse> {
+    open class func bulkDomainAvailabilityV2WithRequestBuilder(bulkDomainAvailabilityRequest: BulkDomainAvailabilityRequest, domain: String? = nil, format: Format_bulkDomainAvailabilityV2? = nil) -> RequestBuilder<BulkDomainAvailabilityResponse> {
         let localVariablePath = "/v2.0/domain/availability"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bulkDomainAvailabilityRequest)
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domain": (wrappedValue: domain?.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
@@ -81,7 +78,6 @@ open class DomainAvailabilityAPI {
     /**
      Domain Availability Check with Suggestions
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domain: (query) The domain name to check 
      - parameter sug: (query) Whether to return TLD suggestions alongside the queried domain. (optional, default to false)
      - parameter count: (query) Number of TLD suggestions to return when sug&#x3D;true. Maximum is 100. (optional, default to 5)
@@ -89,8 +85,8 @@ open class DomainAvailabilityAPI {
      - returns: DomainAvailabilityResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func domainAvailabilityV2(apiKey: String, domain: String, sug: Bool? = nil, count: Int? = nil, format: Format_domainAvailabilityV2? = nil) async throws -> DomainAvailabilityResponse {
-        return try await domainAvailabilityV2WithRequestBuilder(apiKey: apiKey, domain: domain, sug: sug, count: count, format: format).execute().body
+    open class func domainAvailabilityV2(domain: String, sug: Bool? = nil, count: Int? = nil, format: Format_domainAvailabilityV2? = nil) async throws -> DomainAvailabilityResponse {
+        return try await domainAvailabilityV2WithRequestBuilder(domain: domain, sug: sug, count: count, format: format).execute().body
     }
 
     /**
@@ -100,21 +96,19 @@ open class DomainAvailabilityAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter domain: (query) The domain name to check 
      - parameter sug: (query) Whether to return TLD suggestions alongside the queried domain. (optional, default to false)
      - parameter count: (query) Number of TLD suggestions to return when sug&#x3D;true. Maximum is 100. (optional, default to 5)
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<DomainAvailabilityResponse> 
      */
-    open class func domainAvailabilityV2WithRequestBuilder(apiKey: String, domain: String, sug: Bool? = nil, count: Int? = nil, format: Format_domainAvailabilityV2? = nil) -> RequestBuilder<DomainAvailabilityResponse> {
+    open class func domainAvailabilityV2WithRequestBuilder(domain: String, sug: Bool? = nil, count: Int? = nil, format: Format_domainAvailabilityV2? = nil) -> RequestBuilder<DomainAvailabilityResponse> {
         let localVariablePath = "/v2.0/domain/availability"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "domain": (wrappedValue: domain.encodeToJSON(), isExplode: true),
             "sug": (wrappedValue: sug?.encodeToJSON(), isExplode: true),
             "count": (wrappedValue: count?.encodeToJSON(), isExplode: true),

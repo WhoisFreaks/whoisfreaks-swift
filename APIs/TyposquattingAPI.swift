@@ -15,15 +15,14 @@ open class TyposquattingAPI {
     /**
      Typosquatting Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter keyword: (query)  (optional)
      - parameter pattern: (query)  (optional)
      - parameter pageToken: (query)  (optional)
      - returns: TyposquattingResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func typosquatting(apiKey: String, keyword: String? = nil, pattern: String? = nil, pageToken: String? = nil) async throws -> TyposquattingResponse {
-        return try await typosquattingWithRequestBuilder(apiKey: apiKey, keyword: keyword, pattern: pattern, pageToken: pageToken).execute().body
+    open class func typosquatting(keyword: String? = nil, pattern: String? = nil, pageToken: String? = nil) async throws -> TyposquattingResponse {
+        return try await typosquattingWithRequestBuilder(keyword: keyword, pattern: pattern, pageToken: pageToken).execute().body
     }
 
     /**
@@ -33,20 +32,18 @@ open class TyposquattingAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter keyword: (query)  (optional)
      - parameter pattern: (query)  (optional)
      - parameter pageToken: (query)  (optional)
      - returns: RequestBuilder<TyposquattingResponse> 
      */
-    open class func typosquattingWithRequestBuilder(apiKey: String, keyword: String? = nil, pattern: String? = nil, pageToken: String? = nil) -> RequestBuilder<TyposquattingResponse> {
+    open class func typosquattingWithRequestBuilder(keyword: String? = nil, pattern: String? = nil, pageToken: String? = nil) -> RequestBuilder<TyposquattingResponse> {
         let localVariablePath = "/v3.0/domain/typos"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "keyword": (wrappedValue: keyword?.encodeToJSON(), isExplode: true),
             "pattern": (wrappedValue: pattern?.encodeToJSON(), isExplode: true),
             "pageToken": (wrappedValue: pageToken?.encodeToJSON(), isExplode: true),

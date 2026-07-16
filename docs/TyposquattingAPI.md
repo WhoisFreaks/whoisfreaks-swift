@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **typosquatting**
 ```swift
-    open class func typosquatting(apiKey: String, keyword: String? = nil, pattern: String? = nil, pageToken: String? = nil, completion: @escaping (_ data: TyposquattingResponse?, _ error: Error?) -> Void)
+    open class func typosquatting(keyword: String? = nil, pattern: String? = nil, pageToken: String? = nil, completion: @escaping (_ data: TyposquattingResponse?, _ error: Error?) -> Void)
 ```
 
 Typosquatting Lookup
@@ -21,13 +21,12 @@ Find typo variants of a brand. 5 credits per page.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let keyword = "keyword_example" // String |  (optional)
 let pattern = "pattern_example" // String |  (optional)
 let pageToken = "pageToken_example" // String |  (optional)
 
 // Typosquatting Lookup
-TyposquattingAPI.typosquatting(apiKey: apiKey, keyword: keyword, pattern: pattern, pageToken: pageToken) { (response, error) in
+TyposquattingAPI.typosquatting(keyword: keyword, pattern: pattern, pageToken: pageToken) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -43,7 +42,6 @@ TyposquattingAPI.typosquatting(apiKey: apiKey, keyword: keyword, pattern: patter
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **keyword** | **String** |  | [optional] 
  **pattern** | **String** |  | [optional] 
  **pageToken** | **String** |  | [optional] 

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **dbIpCity**
 ```swift
-    open class func dbIpCity(apiKey: String, date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbIpCity(date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 IP to City Snapshot
@@ -24,11 +24,10 @@ IP to City Snapshot. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | 
 
 // IP to City Snapshot
-DatabasesIPGeolocationAPI.dbIpCity(apiKey: apiKey, date: date) { (response, error) in
+DatabasesIPGeolocationAPI.dbIpCity(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -44,7 +43,6 @@ DatabasesIPGeolocationAPI.dbIpCity(apiKey: apiKey, date: date) { (response, erro
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** |  | 
 
 ### Return type
@@ -64,7 +62,7 @@ Name | Type | Description  | Notes
 
 # **dbIpCityStatus**
 ```swift
-    open class func dbIpCityStatus(apiKey: String, completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
+    open class func dbIpCityStatus(completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
 ```
 
 IP to City Snapshot Status
@@ -76,10 +74,9 @@ IP to City Snapshot Status. Returns the file/snapshot described by this operatio
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 
 // IP to City Snapshot Status
-DatabasesIPGeolocationAPI.dbIpCityStatus(apiKey: apiKey) { (response, error) in
+DatabasesIPGeolocationAPI.dbIpCityStatus() { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -92,10 +89,7 @@ DatabasesIPGeolocationAPI.dbIpCityStatus(apiKey: apiKey) { (response, error) in
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
+This endpoint does not need any parameter.
 
 ### Return type
 
@@ -114,7 +108,7 @@ Name | Type | Description  | Notes
 
 # **dbIpCountry**
 ```swift
-    open class func dbIpCountry(apiKey: String, date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbIpCountry(date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 IP to Country Snapshot
@@ -126,11 +120,10 @@ IP to Country Snapshot. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | 
 
 // IP to Country Snapshot
-DatabasesIPGeolocationAPI.dbIpCountry(apiKey: apiKey, date: date) { (response, error) in
+DatabasesIPGeolocationAPI.dbIpCountry(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -146,7 +139,6 @@ DatabasesIPGeolocationAPI.dbIpCountry(apiKey: apiKey, date: date) { (response, e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** |  | 
 
 ### Return type
@@ -166,7 +158,7 @@ Name | Type | Description  | Notes
 
 # **dbIpCountryStatus**
 ```swift
-    open class func dbIpCountryStatus(apiKey: String, completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
+    open class func dbIpCountryStatus(completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
 ```
 
 IP to Country Snapshot Status
@@ -178,10 +170,9 @@ IP to Country Snapshot Status. Returns the file/snapshot described by this opera
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 
 // IP to Country Snapshot Status
-DatabasesIPGeolocationAPI.dbIpCountryStatus(apiKey: apiKey) { (response, error) in
+DatabasesIPGeolocationAPI.dbIpCountryStatus() { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -194,10 +185,7 @@ DatabasesIPGeolocationAPI.dbIpCountryStatus(apiKey: apiKey) { (response, error) 
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
+This endpoint does not need any parameter.
 
 ### Return type
 

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **ipWhois**
 ```swift
-    open class func ipWhois(apiKey: String, ip: String, format: Format_ipWhois? = nil, completion: @escaping (_ data: IpWhoisResponse?, _ error: Error?) -> Void)
+    open class func ipWhois(ip: String, format: Format_ipWhois? = nil, completion: @escaping (_ data: IpWhoisResponse?, _ error: Error?) -> Void)
 ```
 
 IP WHOIS Lookup
@@ -21,12 +21,11 @@ WHOIS for an IP address. 1 credit.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let ip = "ip_example" // String | 
 let format = "format_example" // String |  (optional) (default to .json)
 
 // IP WHOIS Lookup
-IPWHOISAPI.ipWhois(apiKey: apiKey, ip: ip, format: format) { (response, error) in
+IPWHOISAPI.ipWhois(ip: ip, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -42,7 +41,6 @@ IPWHOISAPI.ipWhois(apiKey: apiKey, ip: ip, format: format) { (response, error) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **ip** | **String** |  | 
  **format** | **String** |  | [optional] [default to .json]
 

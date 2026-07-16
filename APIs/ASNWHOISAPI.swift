@@ -23,14 +23,13 @@ open class ASNWHOISAPI {
     /**
      ASN WHOIS Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter asn: (query)  
      - parameter format: (query)  (optional, default to .json)
      - returns: AsnWhoisResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func asnWhois(apiKey: String, asn: String, format: Format_asnWhois? = nil) async throws -> AsnWhoisResponse {
-        return try await asnWhoisWithRequestBuilder(apiKey: apiKey, asn: asn, format: format).execute().body
+    open class func asnWhois(asn: String, format: Format_asnWhois? = nil) async throws -> AsnWhoisResponse {
+        return try await asnWhoisWithRequestBuilder(asn: asn, format: format).execute().body
     }
 
     /**
@@ -40,19 +39,17 @@ open class ASNWHOISAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter asn: (query)  
      - parameter format: (query)  (optional, default to .json)
      - returns: RequestBuilder<AsnWhoisResponse> 
      */
-    open class func asnWhoisWithRequestBuilder(apiKey: String, asn: String, format: Format_asnWhois? = nil) -> RequestBuilder<AsnWhoisResponse> {
+    open class func asnWhoisWithRequestBuilder(asn: String, format: Format_asnWhois? = nil) -> RequestBuilder<AsnWhoisResponse> {
         let localVariablePath = "/v2.0/asn-whois"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "asn": (wrappedValue: asn.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])

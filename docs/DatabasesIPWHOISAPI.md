@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **dbIpWhois**
 ```swift
-    open class func dbIpWhois(apiKey: String, date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbIpWhois(date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 IP WHOIS Snapshot
@@ -22,11 +22,10 @@ IP WHOIS Snapshot. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | 
 
 // IP WHOIS Snapshot
-DatabasesIPWHOISAPI.dbIpWhois(apiKey: apiKey, date: date) { (response, error) in
+DatabasesIPWHOISAPI.dbIpWhois(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -42,7 +41,6 @@ DatabasesIPWHOISAPI.dbIpWhois(apiKey: apiKey, date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** |  | 
 
 ### Return type
@@ -62,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **dbIpWhoisStatus**
 ```swift
-    open class func dbIpWhoisStatus(apiKey: String, completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
+    open class func dbIpWhoisStatus(completion: @escaping (_ data: SnapshotStatus?, _ error: Error?) -> Void)
 ```
 
 IP WHOIS Snapshot Status
@@ -74,10 +72,9 @@ IP WHOIS Snapshot Status. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 
 // IP WHOIS Snapshot Status
-DatabasesIPWHOISAPI.dbIpWhoisStatus(apiKey: apiKey) { (response, error) in
+DatabasesIPWHOISAPI.dbIpWhoisStatus() { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -90,10 +87,7 @@ DatabasesIPWHOISAPI.dbIpWhoisStatus(apiKey: apiKey) { (response, error) in
 ```
 
 ### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
+This endpoint does not need any parameter.
 
 ### Return type
 

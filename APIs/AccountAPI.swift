@@ -15,12 +15,11 @@ open class AccountAPI {
     /**
      Account Usage
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: AccountUsageResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func accountUsage(apiKey: String) async throws -> AccountUsageResponse {
-        return try await accountUsageWithRequestBuilder(apiKey: apiKey).execute().body
+    open class func accountUsage() async throws -> AccountUsageResponse {
+        return try await accountUsageWithRequestBuilder().execute().body
     }
 
     /**
@@ -30,18 +29,14 @@ open class AccountAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: RequestBuilder<AccountUsageResponse> 
      */
-    open class func accountUsageWithRequestBuilder(apiKey: String) -> RequestBuilder<AccountUsageResponse> {
+    open class func accountUsageWithRequestBuilder() -> RequestBuilder<AccountUsageResponse> {
         let localVariablePath = "/v1.0/whoisapi/usage"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             :
@@ -91,12 +86,11 @@ open class AccountAPI {
     /**
      Rotate API Key
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: String
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func rotateApiKey(apiKey: String) async throws -> String {
-        return try await rotateApiKeyWithRequestBuilder(apiKey: apiKey).execute().body
+    open class func rotateApiKey() async throws -> String {
+        return try await rotateApiKeyWithRequestBuilder().execute().body
     }
 
     /**
@@ -106,18 +100,14 @@ open class AccountAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - returns: RequestBuilder<String> 
      */
-    open class func rotateApiKeyWithRequestBuilder(apiKey: String) -> RequestBuilder<String> {
+    open class func rotateApiKeyWithRequestBuilder() -> RequestBuilder<String> {
         let localVariablePath = "/v1.0/api-key/rotate"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             :

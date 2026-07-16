@@ -15,13 +15,12 @@ open class IPReputationAPI {
     /**
      Bulk IP Reputation
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter bulkGeolocationRequest: (body)  
      - returns: [IpReputationResponse]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func bulkIpReputation(apiKey: String, bulkGeolocationRequest: BulkGeolocationRequest) async throws -> [IpReputationResponse] {
-        return try await bulkIpReputationWithRequestBuilder(apiKey: apiKey, bulkGeolocationRequest: bulkGeolocationRequest).execute().body
+    open class func bulkIpReputation(bulkGeolocationRequest: BulkGeolocationRequest) async throws -> [IpReputationResponse] {
+        return try await bulkIpReputationWithRequestBuilder(bulkGeolocationRequest: bulkGeolocationRequest).execute().body
     }
 
     /**
@@ -31,19 +30,15 @@ open class IPReputationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter bulkGeolocationRequest: (body)  
      - returns: RequestBuilder<[IpReputationResponse]> 
      */
-    open class func bulkIpReputationWithRequestBuilder(apiKey: String, bulkGeolocationRequest: BulkGeolocationRequest) -> RequestBuilder<[IpReputationResponse]> {
+    open class func bulkIpReputationWithRequestBuilder(bulkGeolocationRequest: BulkGeolocationRequest) -> RequestBuilder<[IpReputationResponse]> {
         let localVariablePath = "/v1.0/security"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters = JSONEncodingHelper.encodingParameters(forEncodableObject: bulkGeolocationRequest)
 
-        var localVariableUrlComponents = URLComponents(string: localVariableURLString)
-        localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
-        ])
+        let localVariableUrlComponents = URLComponents(string: localVariableURLString)
 
         let localVariableNillableHeaders: [String: Any?] = [
             "Content-Type": "application/json",
@@ -59,13 +54,12 @@ open class IPReputationAPI {
     /**
      IP Reputation Lookup
      
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter ip: (query)  
      - returns: IpReputationResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func ipReputation(apiKey: String, ip: String) async throws -> IpReputationResponse {
-        return try await ipReputationWithRequestBuilder(apiKey: apiKey, ip: ip).execute().body
+    open class func ipReputation(ip: String) async throws -> IpReputationResponse {
+        return try await ipReputationWithRequestBuilder(ip: ip).execute().body
     }
 
     /**
@@ -75,18 +69,16 @@ open class IPReputationAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter apiKey: (query) Your WHOISFreaks API key 
      - parameter ip: (query)  
      - returns: RequestBuilder<IpReputationResponse> 
      */
-    open class func ipReputationWithRequestBuilder(apiKey: String, ip: String) -> RequestBuilder<IpReputationResponse> {
+    open class func ipReputationWithRequestBuilder(ip: String) -> RequestBuilder<IpReputationResponse> {
         let localVariablePath = "/v1.0/security"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
-            "apiKey": (wrappedValue: apiKey.encodeToJSON(), isExplode: true),
             "ip": (wrappedValue: ip.encodeToJSON(), isExplode: true),
         ])
 

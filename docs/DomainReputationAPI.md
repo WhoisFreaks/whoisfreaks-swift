@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **domainReputation**
 ```swift
-    open class func domainReputation(apiKey: String, domainName: String, format: Format_domainReputation? = nil, completion: @escaping (_ data: DomainReputationResponse?, _ error: Error?) -> Void)
+    open class func domainReputation(domainName: String, format: Format_domainReputation? = nil, completion: @escaping (_ data: DomainReputationResponse?, _ error: Error?) -> Void)
 ```
 
 Domain Reputation Lookup
@@ -21,12 +21,11 @@ Real-time domain threat assessment. Returns risk verdict, trust score, DGA analy
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let domainName = "domainName_example" // String | The domain name to assess
 let format = "format_example" // String |  (optional) (default to .json)
 
 // Domain Reputation Lookup
-DomainReputationAPI.domainReputation(apiKey: apiKey, domainName: domainName, format: format) { (response, error) in
+DomainReputationAPI.domainReputation(domainName: domainName, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -42,7 +41,6 @@ DomainReputationAPI.domainReputation(apiKey: apiKey, domainName: domainName, for
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **domainName** | **String** | The domain name to assess | 
  **format** | **String** |  | [optional] [default to .json]
 

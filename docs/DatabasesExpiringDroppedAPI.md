@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **dbDropped**
 ```swift
-    open class func dbDropped(apiKey: String, whois: Bool, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbDropped(whois: Bool, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Dropped Domains
@@ -25,12 +25,11 @@ Dropped Domains. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let whois = true // Bool | 
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Dropped Domains
-DatabasesExpiringDroppedAPI.dbDropped(apiKey: apiKey, whois: whois, date: date) { (response, error) in
+DatabasesExpiringDroppedAPI.dbDropped(whois: whois, date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -46,7 +45,6 @@ DatabasesExpiringDroppedAPI.dbDropped(apiKey: apiKey, whois: whois, date: date) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **whois** | **Bool** |  | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
@@ -67,7 +65,7 @@ Name | Type | Description  | Notes
 
 # **dbDroppedBacklinks**
 ```swift
-    open class func dbDroppedBacklinks(apiKey: String, whois: Bool? = nil, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbDroppedBacklinks(whois: Bool? = nil, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Dropped With Backlinks
@@ -79,12 +77,11 @@ Dropped With Backlinks. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let whois = true // Bool |  (optional)
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Dropped With Backlinks
-DatabasesExpiringDroppedAPI.dbDroppedBacklinks(apiKey: apiKey, whois: whois, date: date) { (response, error) in
+DatabasesExpiringDroppedAPI.dbDroppedBacklinks(whois: whois, date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -100,7 +97,6 @@ DatabasesExpiringDroppedAPI.dbDroppedBacklinks(apiKey: apiKey, whois: whois, dat
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **whois** | **Bool** |  | [optional] 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
@@ -121,7 +117,7 @@ Name | Type | Description  | Notes
 
 # **dbDroppedJson**
 ```swift
-    open class func dbDroppedJson(apiKey: String, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func dbDroppedJson(date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
 ```
 
 Dropped Domains (JSON)
@@ -133,12 +129,11 @@ Dropped Domains (JSON). Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Dropped Domains (JSON)
-DatabasesExpiringDroppedAPI.dbDroppedJson(apiKey: apiKey, date: date, tlds: tlds) { (response, error) in
+DatabasesExpiringDroppedAPI.dbDroppedJson(date: date, tlds: tlds) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -154,7 +149,6 @@ DatabasesExpiringDroppedAPI.dbDroppedJson(apiKey: apiKey, date: date, tlds: tlds
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
 
@@ -175,7 +169,7 @@ Name | Type | Description  | Notes
 
 # **dbExpired**
 ```swift
-    open class func dbExpired(apiKey: String, whois: Bool, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbExpired(whois: Bool, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Expiring Domains
@@ -187,12 +181,11 @@ Expiring Domains. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let whois = true // Bool | 
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Expiring Domains
-DatabasesExpiringDroppedAPI.dbExpired(apiKey: apiKey, whois: whois, date: date) { (response, error) in
+DatabasesExpiringDroppedAPI.dbExpired(whois: whois, date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -208,7 +201,6 @@ DatabasesExpiringDroppedAPI.dbExpired(apiKey: apiKey, whois: whois, date: date) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **whois** | **Bool** |  | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
@@ -229,7 +221,7 @@ Name | Type | Description  | Notes
 
 # **dbExpiredCleaned**
 ```swift
-    open class func dbExpiredCleaned(apiKey: String, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbExpiredCleaned(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Expiring Cleaned WHOIS
@@ -241,11 +233,10 @@ Expiring Cleaned WHOIS. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
 
 // Expiring Cleaned WHOIS
-DatabasesExpiringDroppedAPI.dbExpiredCleaned(apiKey: apiKey, date: date) { (response, error) in
+DatabasesExpiringDroppedAPI.dbExpiredCleaned(date: date) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -261,7 +252,6 @@ DatabasesExpiringDroppedAPI.dbExpiredCleaned(apiKey: apiKey, date: date) { (resp
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type

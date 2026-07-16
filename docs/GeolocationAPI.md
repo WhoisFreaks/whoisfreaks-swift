@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **bulkGeolocation**
 ```swift
-    open class func bulkGeolocation(apiKey: String, bulkGeolocationRequest: BulkGeolocationRequest, completion: @escaping (_ data: [GeolocationResponse]?, _ error: Error?) -> Void)
+    open class func bulkGeolocation(bulkGeolocationRequest: BulkGeolocationRequest, completion: @escaping (_ data: [GeolocationResponse]?, _ error: Error?) -> Void)
 ```
 
 Bulk IP Geolocation
@@ -22,11 +22,10 @@ Up to 100 IPs.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let bulkGeolocationRequest = bulkGeolocation_request(ips: ["ips_example"]) // BulkGeolocationRequest | 
 
 // Bulk IP Geolocation
-GeolocationAPI.bulkGeolocation(apiKey: apiKey, bulkGeolocationRequest: bulkGeolocationRequest) { (response, error) in
+GeolocationAPI.bulkGeolocation(bulkGeolocationRequest: bulkGeolocationRequest) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -42,7 +41,6 @@ GeolocationAPI.bulkGeolocation(apiKey: apiKey, bulkGeolocationRequest: bulkGeolo
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **bulkGeolocationRequest** | [**BulkGeolocationRequest**](BulkGeolocationRequest.md) |  | 
 
 ### Return type
@@ -62,7 +60,7 @@ Name | Type | Description  | Notes
 
 # **geolocation**
 ```swift
-    open class func geolocation(apiKey: String, ip: String, completion: @escaping (_ data: GeolocationResponse?, _ error: Error?) -> Void)
+    open class func geolocation(ip: String, completion: @escaping (_ data: GeolocationResponse?, _ error: Error?) -> Void)
 ```
 
 IP Geolocation Lookup
@@ -74,11 +72,10 @@ Get location, ASN, currency for an IP. 1 credit.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let apiKey = "apiKey_example" // String | Your WHOISFreaks API key
 let ip = "ip_example" // String | 
 
 // IP Geolocation Lookup
-GeolocationAPI.geolocation(apiKey: apiKey, ip: ip) { (response, error) in
+GeolocationAPI.geolocation(ip: ip) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -94,7 +91,6 @@ GeolocationAPI.geolocation(apiKey: apiKey, ip: ip) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **apiKey** | **String** | Your WHOISFreaks API key | 
  **ip** | **String** |  | 
 
 ### Return type
