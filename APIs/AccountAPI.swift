@@ -61,12 +61,12 @@ open class AccountAPI {
 
     /**
      Database File Status (Public)
-     - GET /v3.3/status
+     - GET /v3.4/status
      - No API key required. Returns freshness of all downloadable files.
      - returns: RequestBuilder<DatabaseFileStatus> 
      */
     open class func databaseFileStatusWithRequestBuilder() -> RequestBuilder<DatabaseFileStatus> {
-        let localVariablePath = "/v3.3/status"
+        let localVariablePath = "/v3.4/status"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 

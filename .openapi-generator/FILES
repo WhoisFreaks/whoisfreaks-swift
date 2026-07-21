@@ -14,6 +14,7 @@ APIs/DatabasesIPSecurityAPI.swift
 APIs/DatabasesIPWHOISAPI.swift
 APIs/DatabasesNewlyRegisteredAPI.swift
 APIs/DatabasesSubdomainsAPI.swift
+APIs/DatabasesThreatFeedAPI.swift
 APIs/DatabasesWHOISAPI.swift
 APIs/DomainAvailabilityAPI.swift
 APIs/DomainReputationAPI.swift
@@ -100,6 +101,7 @@ Models/SslResponse.swift
 Models/SslUnitInfo.swift
 Models/Subdomain.swift
 Models/SubdomainsResponse.swift
+Models/ThreatFeedStatus.swift
 Models/ThreatSource.swift
 Models/TrustSignals.swift
 Models/TyposquattingDomain.swift
@@ -146,6 +148,7 @@ docs/DatabasesIPSecurityAPI.md
 docs/DatabasesIPWHOISAPI.md
 docs/DatabasesNewlyRegisteredAPI.md
 docs/DatabasesSubdomainsAPI.md
+docs/DatabasesThreatFeedAPI.md
 docs/DatabasesWHOISAPI.md
 docs/DateRangeStatus.md
 docs/DgaFeatures.md
@@ -206,6 +209,7 @@ docs/SslUnitInfo.md
 docs/Subdomain.md
 docs/SubdomainsAPI.md
 docs/SubdomainsResponse.md
+docs/ThreatFeedStatus.md
 docs/ThreatSource.md
 docs/TrustSignals.md
 docs/TyposquattingAPI.md

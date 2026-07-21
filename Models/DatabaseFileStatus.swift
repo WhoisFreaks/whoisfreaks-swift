@@ -17,14 +17,16 @@ public struct DatabaseFileStatus: Codable, JSONEncodable, Hashable {
     public var cleanedExpired: DateRangeStatus?
     public var dropped: DateRangeStatus?
     public var droppedWithBacklinks: DateRangeStatus?
+    public var threatFeed: ThreatFeedStatus?
     public var databaseUpdates: DatabaseUpdates?
 
-    public init(newly: NewlyStatus? = nil, expired: DateRangeStatus? = nil, cleanedExpired: DateRangeStatus? = nil, dropped: DateRangeStatus? = nil, droppedWithBacklinks: DateRangeStatus? = nil, databaseUpdates: DatabaseUpdates? = nil) {
+    public init(newly: NewlyStatus? = nil, expired: DateRangeStatus? = nil, cleanedExpired: DateRangeStatus? = nil, dropped: DateRangeStatus? = nil, droppedWithBacklinks: DateRangeStatus? = nil, threatFeed: ThreatFeedStatus? = nil, databaseUpdates: DatabaseUpdates? = nil) {
         self.newly = newly
         self.expired = expired
         self.cleanedExpired = cleanedExpired
         self.dropped = dropped
         self.droppedWithBacklinks = droppedWithBacklinks
+        self.threatFeed = threatFeed
         self.databaseUpdates = databaseUpdates
     }
 
@@ -34,6 +36,7 @@ public struct DatabaseFileStatus: Codable, JSONEncodable, Hashable {
         case cleanedExpired = "cleaned_expired"
         case dropped
         case droppedWithBacklinks = "dropped_with_backlinks"
+        case threatFeed = "threat_feed"
         case databaseUpdates = "database_updates"
     }
 
@@ -61,6 +64,7 @@ public struct DatabaseFileStatus: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(cleanedExpired, forKey: .cleanedExpired)
         try container.encodeIfPresent(dropped, forKey: .dropped)
         try container.encodeIfPresent(droppedWithBacklinks, forKey: .droppedWithBacklinks)
+        try container.encodeIfPresent(threatFeed, forKey: .threatFeed)
         try container.encodeIfPresent(databaseUpdates, forKey: .databaseUpdates)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
@@ -76,6 +80,7 @@ public struct DatabaseFileStatus: Codable, JSONEncodable, Hashable {
         cleanedExpired = try container.decodeIfPresent(DateRangeStatus.self, forKey: .cleanedExpired)
         dropped = try container.decodeIfPresent(DateRangeStatus.self, forKey: .dropped)
         droppedWithBacklinks = try container.decodeIfPresent(DateRangeStatus.self, forKey: .droppedWithBacklinks)
+        threatFeed = try container.decodeIfPresent(ThreatFeedStatus.self, forKey: .threatFeed)
         databaseUpdates = try container.decodeIfPresent(DatabaseUpdates.self, forKey: .databaseUpdates)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("newly")
@@ -83,6 +88,7 @@ public struct DatabaseFileStatus: Codable, JSONEncodable, Hashable {
         nonAdditionalPropertyKeys.insert("cleaned_expired")
         nonAdditionalPropertyKeys.insert("dropped")
         nonAdditionalPropertyKeys.insert("dropped_with_backlinks")
+        nonAdditionalPropertyKeys.insert("threat_feed")
         nonAdditionalPropertyKeys.insert("database_updates")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
         additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
