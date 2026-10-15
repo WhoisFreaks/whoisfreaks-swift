@@ -15,7 +15,7 @@ open class DatabasesThreatFeedAPI {
     /**
      Download the daily malware threat feed (CSV)
      
-     - parameter date: (query) Feed date (yyyy-MM-dd); defaults to latest available (optional)
+     - parameter date: (query) Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
@@ -29,12 +29,12 @@ open class DatabasesThreatFeedAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter date: (query) Feed date (yyyy-MM-dd); defaults to latest available (optional)
+     - parameter date: (query) Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
      - returns: RequestBuilder<URL> 
      */
     open class func downloadThreatFeedMalwareWithRequestBuilder(date: String? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.4/download/threat-feed/malware"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -73,7 +73,7 @@ open class DatabasesThreatFeedAPI {
      */
     open class func downloadThreatFeedMalwareSampleWithRequestBuilder() -> RequestBuilder<URL> {
         let localVariablePath = "/v3.4/download/threat-feed/malware/sample"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -92,7 +92,7 @@ open class DatabasesThreatFeedAPI {
     /**
      Download the daily phishing threat feed (CSV)
      
-     - parameter date: (query) Feed date (yyyy-MM-dd); defaults to latest available (optional)
+     - parameter date: (query) Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
@@ -106,12 +106,12 @@ open class DatabasesThreatFeedAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter date: (query) Feed date (yyyy-MM-dd); defaults to latest available (optional)
+     - parameter date: (query) Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
      - returns: RequestBuilder<URL> 
      */
     open class func downloadThreatFeedPhishingWithRequestBuilder(date: String? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.4/download/threat-feed/phishing"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -150,7 +150,7 @@ open class DatabasesThreatFeedAPI {
      */
     open class func downloadThreatFeedPhishingSampleWithRequestBuilder() -> RequestBuilder<URL> {
         let localVariablePath = "/v3.4/download/threat-feed/phishing/sample"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -169,7 +169,7 @@ open class DatabasesThreatFeedAPI {
     /**
      Download the daily spam threat feed (CSV)
      
-     - parameter date: (query) Feed date (yyyy-MM-dd); defaults to latest available (optional)
+     - parameter date: (query) Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
@@ -183,12 +183,12 @@ open class DatabasesThreatFeedAPI {
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
-     - parameter date: (query) Feed date (yyyy-MM-dd); defaults to latest available (optional)
+     - parameter date: (query) Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
      - returns: RequestBuilder<URL> 
      */
     open class func downloadThreatFeedSpamWithRequestBuilder(date: String? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.4/download/threat-feed/spam"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -227,7 +227,7 @@ open class DatabasesThreatFeedAPI {
      */
     open class func downloadThreatFeedSpamSampleWithRequestBuilder() -> RequestBuilder<URL> {
         let localVariablePath = "/v3.4/download/threat-feed/spam/sample"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)

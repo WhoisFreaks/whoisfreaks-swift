@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 # **dbDropped**
 ```swift
-    open class func dbDropped(whois: Bool, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbDropped(whois: Bool, date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Dropped Domains
@@ -26,7 +26,7 @@ Dropped Domains. Returns the file/snapshot described by this operation.
 import WhoisFreaks
 
 let whois = true // Bool | 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Dropped Domains
 DatabasesExpiringDroppedAPI.dbDropped(whois: whois, date: date) { (response, error) in
@@ -46,7 +46,7 @@ DatabasesExpiringDroppedAPI.dbDropped(whois: whois, date: date) { (response, err
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **whois** | **Bool** |  | 
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 # **dbDroppedBacklinks**
 ```swift
-    open class func dbDroppedBacklinks(whois: Bool? = nil, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbDroppedBacklinks(whois: Bool? = nil, date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Dropped With Backlinks
@@ -78,7 +78,7 @@ Dropped With Backlinks. Returns the file/snapshot described by this operation.
 import WhoisFreaks
 
 let whois = true // Bool |  (optional)
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Dropped With Backlinks
 DatabasesExpiringDroppedAPI.dbDroppedBacklinks(whois: whois, date: date) { (response, error) in
@@ -98,7 +98,7 @@ DatabasesExpiringDroppedAPI.dbDroppedBacklinks(whois: whois, date: date) { (resp
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **whois** | **Bool** |  | [optional] 
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -117,7 +117,7 @@ Name | Type | Description  | Notes
 
 # **dbDroppedJson**
 ```swift
-    open class func dbDroppedJson(date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func dbDroppedJson(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
 ```
 
 Dropped Domains (JSON)
@@ -129,7 +129,7 @@ Dropped Domains (JSON). Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Dropped Domains (JSON)
@@ -149,7 +149,7 @@ DatabasesExpiringDroppedAPI.dbDroppedJson(date: date, tlds: tlds) { (response, e
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
 
 ### Return type
@@ -169,7 +169,7 @@ Name | Type | Description  | Notes
 
 # **dbExpired**
 ```swift
-    open class func dbExpired(whois: Bool, date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbExpired(whois: Bool, date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Expiring Domains
@@ -182,7 +182,7 @@ Expiring Domains. Returns the file/snapshot described by this operation.
 import WhoisFreaks
 
 let whois = true // Bool | 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Expiring Domains
 DatabasesExpiringDroppedAPI.dbExpired(whois: whois, date: date) { (response, error) in
@@ -202,7 +202,7 @@ DatabasesExpiringDroppedAPI.dbExpired(whois: whois, date: date) { (response, err
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **whois** | **Bool** |  | 
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 # **dbExpiredCleaned**
 ```swift
-    open class func dbExpiredCleaned(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbExpiredCleaned(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Expiring Cleaned WHOIS
@@ -233,7 +233,7 @@ Expiring Cleaned WHOIS. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Expiring Cleaned WHOIS
 DatabasesExpiringDroppedAPI.dbExpiredCleaned(date: date) { (response, error) in
@@ -252,7 +252,7 @@ DatabasesExpiringDroppedAPI.dbExpiredCleaned(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **dbDnsDaily**
 ```swift
-    open class func dbDnsDaily(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbDnsDaily(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 DNS Database Daily
@@ -23,7 +23,7 @@ DNS Database Daily. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // DNS Database Daily
 DatabasesDNSAPI.dbDnsDaily(date: date) { (response, error) in
@@ -42,7 +42,7 @@ DatabasesDNSAPI.dbDnsDaily(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **dbDnsMonthly**
 ```swift
-    open class func dbDnsMonthly(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbDnsMonthly(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 DNS Database Monthly
@@ -73,7 +73,7 @@ DNS Database Monthly. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // DNS Database Monthly
 DatabasesDNSAPI.dbDnsMonthly(date: date) { (response, error) in
@@ -92,7 +92,7 @@ DatabasesDNSAPI.dbDnsMonthly(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 # **dbDnsWeekly**
 ```swift
-    open class func dbDnsWeekly(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbDnsWeekly(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 DNS Database Weekly
@@ -123,7 +123,7 @@ DNS Database Weekly. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // DNS Database Weekly
 DatabasesDNSAPI.dbDnsWeekly(date: date) { (response, error) in
@@ -142,7 +142,7 @@ DatabasesDNSAPI.dbDnsWeekly(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 

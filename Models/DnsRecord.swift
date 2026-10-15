@@ -13,9 +13,17 @@ import AnyCodable
 /** Union of all DNS record variants (A/AAAA/MX/NS/CNAME/PTR/TXT/SPF/SOA). */
 public struct DnsRecord: Codable, JSONEncodable, Hashable {
 
-    public var type: String?
+    /** Numeric DNS record type: 1 A, 2 NS, 5 CNAME, 6 SOA, 12 PTR, 15 MX, 16 TXT, 28 AAAA, 99 SPF. */
+    public var type: Int?
+    /** Record type name, e.g. A, MX, TXT */
+    public var dnsType: String?
     public var name: String?
     public var ttl: Int?
+    /** The record in zone-file format */
+    public var rawText: String?
+    public var rRsetType: Int?
+    /** Target host for NS, CNAME and PTR records */
+    public var singleName: String?
     public var address: String?
     public var priority: Int?
     public var exchange: String?
@@ -23,16 +31,21 @@ public struct DnsRecord: Codable, JSONEncodable, Hashable {
     public var strings: [String]?
     public var host: String?
     public var admin: String?
-    public var serial: Int?
+    /** SOA serial; values above 2^31 are common, so it is 64-bit */
+    public var serial: Int64?
     public var refresh: Int?
     public var retry: Int?
     public var expire: Int?
     public var minimum: Int?
 
-    public init(type: String? = nil, name: String? = nil, ttl: Int? = nil, address: String? = nil, priority: Int? = nil, exchange: String? = nil, target: String? = nil, strings: [String]? = nil, host: String? = nil, admin: String? = nil, serial: Int? = nil, refresh: Int? = nil, retry: Int? = nil, expire: Int? = nil, minimum: Int? = nil) {
+    public init(type: Int? = nil, dnsType: String? = nil, name: String? = nil, ttl: Int? = nil, rawText: String? = nil, rRsetType: Int? = nil, singleName: String? = nil, address: String? = nil, priority: Int? = nil, exchange: String? = nil, target: String? = nil, strings: [String]? = nil, host: String? = nil, admin: String? = nil, serial: Int64? = nil, refresh: Int? = nil, retry: Int? = nil, expire: Int? = nil, minimum: Int? = nil) {
         self.type = type
+        self.dnsType = dnsType
         self.name = name
         self.ttl = ttl
+        self.rawText = rawText
+        self.rRsetType = rRsetType
+        self.singleName = singleName
         self.address = address
         self.priority = priority
         self.exchange = exchange
@@ -49,8 +62,12 @@ public struct DnsRecord: Codable, JSONEncodable, Hashable {
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case type
+        case dnsType
         case name
         case ttl
+        case rawText
+        case rRsetType
+        case singleName
         case address
         case priority
         case exchange
@@ -85,8 +102,12 @@ public struct DnsRecord: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(type, forKey: .type)
+        try container.encodeIfPresent(dnsType, forKey: .dnsType)
         try container.encodeIfPresent(name, forKey: .name)
         try container.encodeIfPresent(ttl, forKey: .ttl)
+        try container.encodeIfPresent(rawText, forKey: .rawText)
+        try container.encodeIfPresent(rRsetType, forKey: .rRsetType)
+        try container.encodeIfPresent(singleName, forKey: .singleName)
         try container.encodeIfPresent(address, forKey: .address)
         try container.encodeIfPresent(priority, forKey: .priority)
         try container.encodeIfPresent(exchange, forKey: .exchange)
@@ -108,9 +129,13 @@ public struct DnsRecord: Codable, JSONEncodable, Hashable {
     public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
-        type = try container.decodeIfPresent(String.self, forKey: .type)
+        type = try container.decodeIfPresent(Int.self, forKey: .type)
+        dnsType = try container.decodeIfPresent(String.self, forKey: .dnsType)
         name = try container.decodeIfPresent(String.self, forKey: .name)
         ttl = try container.decodeIfPresent(Int.self, forKey: .ttl)
+        rawText = try container.decodeIfPresent(String.self, forKey: .rawText)
+        rRsetType = try container.decodeIfPresent(Int.self, forKey: .rRsetType)
+        singleName = try container.decodeIfPresent(String.self, forKey: .singleName)
         address = try container.decodeIfPresent(String.self, forKey: .address)
         priority = try container.decodeIfPresent(Int.self, forKey: .priority)
         exchange = try container.decodeIfPresent(String.self, forKey: .exchange)
@@ -118,15 +143,19 @@ public struct DnsRecord: Codable, JSONEncodable, Hashable {
         strings = try container.decodeIfPresent([String].self, forKey: .strings)
         host = try container.decodeIfPresent(String.self, forKey: .host)
         admin = try container.decodeIfPresent(String.self, forKey: .admin)
-        serial = try container.decodeIfPresent(Int.self, forKey: .serial)
+        serial = try container.decodeIfPresent(Int64.self, forKey: .serial)
         refresh = try container.decodeIfPresent(Int.self, forKey: .refresh)
         retry = try container.decodeIfPresent(Int.self, forKey: .retry)
         expire = try container.decodeIfPresent(Int.self, forKey: .expire)
         minimum = try container.decodeIfPresent(Int.self, forKey: .minimum)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("type")
+        nonAdditionalPropertyKeys.insert("dnsType")
         nonAdditionalPropertyKeys.insert("name")
         nonAdditionalPropertyKeys.insert("ttl")
+        nonAdditionalPropertyKeys.insert("rawText")
+        nonAdditionalPropertyKeys.insert("rRsetType")
+        nonAdditionalPropertyKeys.insert("singleName")
         nonAdditionalPropertyKeys.insert("address")
         nonAdditionalPropertyKeys.insert("priority")
         nonAdditionalPropertyKeys.insert("exchange")

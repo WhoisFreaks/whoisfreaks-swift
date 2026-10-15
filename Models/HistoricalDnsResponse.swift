@@ -10,26 +10,25 @@ import Foundation
 import AnyCodable
 #endif
 
-/** Note: &#39;currenPage&#39; spelling matches the API. */
 public struct HistoricalDnsResponse: Codable, JSONEncodable, Hashable {
 
     public var totalPages: Int?
-    public var currenPage: Int?
+    public var currentPage: Int?
     public var totalRecords: Int?
-    public var historicalDns: [DnsResponse]?
+    public var historicalDnsRecords: [DnsResponse]?
 
-    public init(totalPages: Int? = nil, currenPage: Int? = nil, totalRecords: Int? = nil, historicalDns: [DnsResponse]? = nil) {
+    public init(totalPages: Int? = nil, currentPage: Int? = nil, totalRecords: Int? = nil, historicalDnsRecords: [DnsResponse]? = nil) {
         self.totalPages = totalPages
-        self.currenPage = currenPage
+        self.currentPage = currentPage
         self.totalRecords = totalRecords
-        self.historicalDns = historicalDns
+        self.historicalDnsRecords = historicalDnsRecords
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case totalPages
-        case currenPage
+        case currentPage
         case totalRecords
-        case historicalDns
+        case historicalDnsRecords
     }
 
     public var additionalProperties: [String: AnyCodable] = [:]
@@ -52,9 +51,9 @@ public struct HistoricalDnsResponse: Codable, JSONEncodable, Hashable {
     public func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encodeIfPresent(totalPages, forKey: .totalPages)
-        try container.encodeIfPresent(currenPage, forKey: .currenPage)
+        try container.encodeIfPresent(currentPage, forKey: .currentPage)
         try container.encodeIfPresent(totalRecords, forKey: .totalRecords)
-        try container.encodeIfPresent(historicalDns, forKey: .historicalDns)
+        try container.encodeIfPresent(historicalDnsRecords, forKey: .historicalDnsRecords)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
     }
@@ -65,14 +64,14 @@ public struct HistoricalDnsResponse: Codable, JSONEncodable, Hashable {
         let container = try decoder.container(keyedBy: CodingKeys.self)
 
         totalPages = try container.decodeIfPresent(Int.self, forKey: .totalPages)
-        currenPage = try container.decodeIfPresent(Int.self, forKey: .currenPage)
+        currentPage = try container.decodeIfPresent(Int.self, forKey: .currentPage)
         totalRecords = try container.decodeIfPresent(Int.self, forKey: .totalRecords)
-        historicalDns = try container.decodeIfPresent([DnsResponse].self, forKey: .historicalDns)
+        historicalDnsRecords = try container.decodeIfPresent([DnsResponse].self, forKey: .historicalDnsRecords)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("totalPages")
-        nonAdditionalPropertyKeys.insert("currenPage")
+        nonAdditionalPropertyKeys.insert("currentPage")
         nonAdditionalPropertyKeys.insert("totalRecords")
-        nonAdditionalPropertyKeys.insert("historicalDns")
+        nonAdditionalPropertyKeys.insert("historicalDnsRecords")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
         additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }

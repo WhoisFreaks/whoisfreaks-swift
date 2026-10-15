@@ -65,7 +65,7 @@ open class IPReputationAPI {
     /**
      IP Reputation Lookup
      - GET /v1.0/security
-     - Threat intel for IP — VPN, proxy, Tor, bots. 1 credit.
+     - Threat intel for IP: VPN, proxy, Tor, bots. 1 credit.
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth

@@ -76,27 +76,26 @@ open class WHOISAPI {
      Historical WHOIS records for a domain
      
      - parameter domainName: (query) Domain to fetch historical WHOIS records for 
-     - parameter page: (query) Page number (optional)
      - parameter format: (query)  (optional)
      - returns: WhoisHistoricalResponse
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func whoisHistory(domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil) async throws -> WhoisHistoricalResponse {
-        return try await whoisHistoryWithRequestBuilder(domainName: domainName, page: page, format: format).execute().body
+    open class func whoisHistory(domainName: String, format: Format_whoisHistory? = nil) async throws -> WhoisHistoricalResponse {
+        return try await whoisHistoryWithRequestBuilder(domainName: domainName, format: format).execute().body
     }
 
     /**
      Historical WHOIS records for a domain
      - GET /v2.0/whois/history
+     - Every WHOIS record captured for the domain since 1986, in one response (no pagination). Cost 2 credits.
      - API Key:
        - type: apiKey apiKey (QUERY)
        - name: ApiKeyAuth
      - parameter domainName: (query) Domain to fetch historical WHOIS records for 
-     - parameter page: (query) Page number (optional)
      - parameter format: (query)  (optional)
      - returns: RequestBuilder<WhoisHistoricalResponse> 
      */
-    open class func whoisHistoryWithRequestBuilder(domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil) -> RequestBuilder<WhoisHistoricalResponse> {
+    open class func whoisHistoryWithRequestBuilder(domainName: String, format: Format_whoisHistory? = nil) -> RequestBuilder<WhoisHistoricalResponse> {
         let localVariablePath = "/v2.0/whois/history"
         let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
         let localVariableParameters: [String: Any]? = nil
@@ -104,7 +103,6 @@ open class WHOISAPI {
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
         localVariableUrlComponents?.queryItems = APIHelper.mapValuesToQueryItems([
             "domainName": (wrappedValue: domainName.encodeToJSON(), isExplode: true),
-            "page": (wrappedValue: page?.encodeToJSON(), isExplode: true),
             "format": (wrappedValue: format?.encodeToJSON(), isExplode: true),
         ])
 

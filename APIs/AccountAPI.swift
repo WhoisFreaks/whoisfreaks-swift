@@ -67,7 +67,7 @@ open class AccountAPI {
      */
     open class func databaseFileStatusWithRequestBuilder() -> RequestBuilder<DatabaseFileStatus> {
         let localVariablePath = "/v3.4/status"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)

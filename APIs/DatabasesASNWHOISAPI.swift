@@ -19,7 +19,7 @@ open class DatabasesASNWHOISAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbAsnWhois(date: Date) async throws -> URL {
+    open class func dbAsnWhois(date: OpenAPIDateWithoutTime) async throws -> URL {
         return try await dbAsnWhoisWithRequestBuilder(date: date).execute().body
     }
 
@@ -33,9 +33,9 @@ open class DatabasesASNWHOISAPI {
      - parameter date: (query)  
      - returns: RequestBuilder<URL> 
      */
-    open class func dbAsnWhoisWithRequestBuilder(date: Date) -> RequestBuilder<URL> {
+    open class func dbAsnWhoisWithRequestBuilder(date: OpenAPIDateWithoutTime) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/snapshot/asn/whois"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -75,7 +75,7 @@ open class DatabasesASNWHOISAPI {
      */
     open class func dbAsnWhoisStatusWithRequestBuilder() -> RequestBuilder<SnapshotStatus> {
         let localVariablePath = "/v3.3/status/snapshot/asn/whois"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)

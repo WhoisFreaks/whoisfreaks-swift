@@ -10,23 +10,83 @@ import Foundation
 import AnyCodable
 #endif
 
-/** One bulk WHOIS result; success items also carry all WhoisResponse fields. */
+/** One bulk WHOIS result. Successful items carry the same fields as a live WHOIS lookup. */
 public struct BulkWhoisItem: Codable, JSONEncodable, Hashable {
 
     public var status: Bool?
     public var domainName: String?
     public var error: String?
+    public var queryTime: String?
+    public var whoisServer: String?
+    public var domainRegistered: String?
+    public var secureDns: Bool?
+    public var domainHandle: String?
+    public var createDate: String?
+    public var updateDate: String?
+    public var expiryDate: String?
+    public var domainRegistrar: RegistrarInformation?
+    public var resellerContact: ResellerContact?
+    public var registrantContact: PersonalInformation?
+    public var administrativeContact: PersonalInformation?
+    public var technicalContact: PersonalInformation?
+    public var billingContact: PersonalInformation?
+    public var eligibilityInfo: EligibilityInfo?
+    public var abuseContact: RegistrarInformation?
+    public var nameServers: [String]?
+    public var domainStatus: [String]?
+    public var whoisRawDomain: String?
+    public var registryData: RegistryData?
 
-    public init(status: Bool? = nil, domainName: String? = nil, error: String? = nil) {
+    public init(status: Bool? = nil, domainName: String? = nil, error: String? = nil, queryTime: String? = nil, whoisServer: String? = nil, domainRegistered: String? = nil, secureDns: Bool? = nil, domainHandle: String? = nil, createDate: String? = nil, updateDate: String? = nil, expiryDate: String? = nil, domainRegistrar: RegistrarInformation? = nil, resellerContact: ResellerContact? = nil, registrantContact: PersonalInformation? = nil, administrativeContact: PersonalInformation? = nil, technicalContact: PersonalInformation? = nil, billingContact: PersonalInformation? = nil, eligibilityInfo: EligibilityInfo? = nil, abuseContact: RegistrarInformation? = nil, nameServers: [String]? = nil, domainStatus: [String]? = nil, whoisRawDomain: String? = nil, registryData: RegistryData? = nil) {
         self.status = status
         self.domainName = domainName
         self.error = error
+        self.queryTime = queryTime
+        self.whoisServer = whoisServer
+        self.domainRegistered = domainRegistered
+        self.secureDns = secureDns
+        self.domainHandle = domainHandle
+        self.createDate = createDate
+        self.updateDate = updateDate
+        self.expiryDate = expiryDate
+        self.domainRegistrar = domainRegistrar
+        self.resellerContact = resellerContact
+        self.registrantContact = registrantContact
+        self.administrativeContact = administrativeContact
+        self.technicalContact = technicalContact
+        self.billingContact = billingContact
+        self.eligibilityInfo = eligibilityInfo
+        self.abuseContact = abuseContact
+        self.nameServers = nameServers
+        self.domainStatus = domainStatus
+        self.whoisRawDomain = whoisRawDomain
+        self.registryData = registryData
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
         case status
         case domainName = "domain_name"
         case error
+        case queryTime = "query_time"
+        case whoisServer = "whois_server"
+        case domainRegistered = "domain_registered"
+        case secureDns = "secure_dns"
+        case domainHandle = "domain_handle"
+        case createDate = "create_date"
+        case updateDate = "update_date"
+        case expiryDate = "expiry_date"
+        case domainRegistrar = "domain_registrar"
+        case resellerContact = "reseller_contact"
+        case registrantContact = "registrant_contact"
+        case administrativeContact = "administrative_contact"
+        case technicalContact = "technical_contact"
+        case billingContact = "billing_contact"
+        case eligibilityInfo = "eligibility_info"
+        case abuseContact = "abuse_contact"
+        case nameServers = "name_servers"
+        case domainStatus = "domain_status"
+        case whoisRawDomain = "whois_raw_domain"
+        case registryData = "registry_data"
     }
 
     public var additionalProperties: [String: AnyCodable] = [:]
@@ -51,6 +111,26 @@ public struct BulkWhoisItem: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(status, forKey: .status)
         try container.encodeIfPresent(domainName, forKey: .domainName)
         try container.encodeIfPresent(error, forKey: .error)
+        try container.encodeIfPresent(queryTime, forKey: .queryTime)
+        try container.encodeIfPresent(whoisServer, forKey: .whoisServer)
+        try container.encodeIfPresent(domainRegistered, forKey: .domainRegistered)
+        try container.encodeIfPresent(secureDns, forKey: .secureDns)
+        try container.encodeIfPresent(domainHandle, forKey: .domainHandle)
+        try container.encodeIfPresent(createDate, forKey: .createDate)
+        try container.encodeIfPresent(updateDate, forKey: .updateDate)
+        try container.encodeIfPresent(expiryDate, forKey: .expiryDate)
+        try container.encodeIfPresent(domainRegistrar, forKey: .domainRegistrar)
+        try container.encodeIfPresent(resellerContact, forKey: .resellerContact)
+        try container.encodeIfPresent(registrantContact, forKey: .registrantContact)
+        try container.encodeIfPresent(administrativeContact, forKey: .administrativeContact)
+        try container.encodeIfPresent(technicalContact, forKey: .technicalContact)
+        try container.encodeIfPresent(billingContact, forKey: .billingContact)
+        try container.encodeIfPresent(eligibilityInfo, forKey: .eligibilityInfo)
+        try container.encodeIfPresent(abuseContact, forKey: .abuseContact)
+        try container.encodeIfPresent(nameServers, forKey: .nameServers)
+        try container.encodeIfPresent(domainStatus, forKey: .domainStatus)
+        try container.encodeIfPresent(whoisRawDomain, forKey: .whoisRawDomain)
+        try container.encodeIfPresent(registryData, forKey: .registryData)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
     }
@@ -63,10 +143,50 @@ public struct BulkWhoisItem: Codable, JSONEncodable, Hashable {
         status = try container.decodeIfPresent(Bool.self, forKey: .status)
         domainName = try container.decodeIfPresent(String.self, forKey: .domainName)
         error = try container.decodeIfPresent(String.self, forKey: .error)
+        queryTime = try container.decodeIfPresent(String.self, forKey: .queryTime)
+        whoisServer = try container.decodeIfPresent(String.self, forKey: .whoisServer)
+        domainRegistered = try container.decodeIfPresent(String.self, forKey: .domainRegistered)
+        secureDns = try container.decodeIfPresent(Bool.self, forKey: .secureDns)
+        domainHandle = try container.decodeIfPresent(String.self, forKey: .domainHandle)
+        createDate = try container.decodeIfPresent(String.self, forKey: .createDate)
+        updateDate = try container.decodeIfPresent(String.self, forKey: .updateDate)
+        expiryDate = try container.decodeIfPresent(String.self, forKey: .expiryDate)
+        domainRegistrar = try container.decodeIfPresent(RegistrarInformation.self, forKey: .domainRegistrar)
+        resellerContact = try container.decodeIfPresent(ResellerContact.self, forKey: .resellerContact)
+        registrantContact = try container.decodeIfPresent(PersonalInformation.self, forKey: .registrantContact)
+        administrativeContact = try container.decodeIfPresent(PersonalInformation.self, forKey: .administrativeContact)
+        technicalContact = try container.decodeIfPresent(PersonalInformation.self, forKey: .technicalContact)
+        billingContact = try container.decodeIfPresent(PersonalInformation.self, forKey: .billingContact)
+        eligibilityInfo = try container.decodeIfPresent(EligibilityInfo.self, forKey: .eligibilityInfo)
+        abuseContact = try container.decodeIfPresent(RegistrarInformation.self, forKey: .abuseContact)
+        nameServers = try container.decodeIfPresent([String].self, forKey: .nameServers)
+        domainStatus = try container.decodeIfPresent([String].self, forKey: .domainStatus)
+        whoisRawDomain = try container.decodeIfPresent(String.self, forKey: .whoisRawDomain)
+        registryData = try container.decodeIfPresent(RegistryData.self, forKey: .registryData)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("status")
         nonAdditionalPropertyKeys.insert("domain_name")
         nonAdditionalPropertyKeys.insert("error")
+        nonAdditionalPropertyKeys.insert("query_time")
+        nonAdditionalPropertyKeys.insert("whois_server")
+        nonAdditionalPropertyKeys.insert("domain_registered")
+        nonAdditionalPropertyKeys.insert("secure_dns")
+        nonAdditionalPropertyKeys.insert("domain_handle")
+        nonAdditionalPropertyKeys.insert("create_date")
+        nonAdditionalPropertyKeys.insert("update_date")
+        nonAdditionalPropertyKeys.insert("expiry_date")
+        nonAdditionalPropertyKeys.insert("domain_registrar")
+        nonAdditionalPropertyKeys.insert("reseller_contact")
+        nonAdditionalPropertyKeys.insert("registrant_contact")
+        nonAdditionalPropertyKeys.insert("administrative_contact")
+        nonAdditionalPropertyKeys.insert("technical_contact")
+        nonAdditionalPropertyKeys.insert("billing_contact")
+        nonAdditionalPropertyKeys.insert("eligibility_info")
+        nonAdditionalPropertyKeys.insert("abuse_contact")
+        nonAdditionalPropertyKeys.insert("name_servers")
+        nonAdditionalPropertyKeys.insert("domain_status")
+        nonAdditionalPropertyKeys.insert("whois_raw_domain")
+        nonAdditionalPropertyKeys.insert("registry_data")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
         additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }

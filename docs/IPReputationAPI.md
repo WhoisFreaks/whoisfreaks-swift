@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 IP Reputation Lookup
 
-Threat intel for IP — VPN, proxy, Tor, bots. 1 credit.
+Threat intel for IP: VPN, proxy, Tor, bots. 1 credit.
 
 ### Example
 ```swift

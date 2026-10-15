@@ -12,7 +12,7 @@ Method | HTTP request | Description
 
 # **dbIpCity**
 ```swift
-    open class func dbIpCity(date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbIpCity(date: OpenAPIDateWithoutTime, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 IP to City Snapshot
@@ -24,7 +24,7 @@ IP to City Snapshot. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | 
+let date = 987 // OpenAPIDateWithoutTime | 
 
 // IP to City Snapshot
 DatabasesIPGeolocationAPI.dbIpCity(date: date) { (response, error) in
@@ -43,7 +43,7 @@ DatabasesIPGeolocationAPI.dbIpCity(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** |  | 
+ **date** | **OpenAPIDateWithoutTime** |  | 
 
 ### Return type
 
@@ -108,7 +108,7 @@ This endpoint does not need any parameter.
 
 # **dbIpCountry**
 ```swift
-    open class func dbIpCountry(date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbIpCountry(date: OpenAPIDateWithoutTime, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 IP to Country Snapshot
@@ -120,7 +120,7 @@ IP to Country Snapshot. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | 
+let date = 987 // OpenAPIDateWithoutTime | 
 
 // IP to Country Snapshot
 DatabasesIPGeolocationAPI.dbIpCountry(date: date) { (response, error) in
@@ -139,7 +139,7 @@ DatabasesIPGeolocationAPI.dbIpCountry(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** |  | 
+ **date** | **OpenAPIDateWithoutTime** |  | 
 
 ### Return type
 

@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **dbWhoisDaily**
 ```swift
-    open class func dbWhoisDaily(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbWhoisDaily(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 WHOIS Database Daily
@@ -23,7 +23,7 @@ WHOIS Database Daily. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // WHOIS Database Daily
 DatabasesWHOISAPI.dbWhoisDaily(date: date) { (response, error) in
@@ -42,7 +42,7 @@ DatabasesWHOISAPI.dbWhoisDaily(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **dbWhoisMonthly**
 ```swift
-    open class func dbWhoisMonthly(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbWhoisMonthly(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 WHOIS Database Monthly
@@ -73,7 +73,7 @@ WHOIS Database Monthly. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // WHOIS Database Monthly
 DatabasesWHOISAPI.dbWhoisMonthly(date: date) { (response, error) in
@@ -92,7 +92,7 @@ DatabasesWHOISAPI.dbWhoisMonthly(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 # **dbWhoisWeekly**
 ```swift
-    open class func dbWhoisWeekly(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbWhoisWeekly(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 WHOIS Database Weekly
@@ -123,7 +123,7 @@ WHOIS Database Weekly. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // WHOIS Database Weekly
 DatabasesWHOISAPI.dbWhoisWeekly(date: date) { (response, error) in
@@ -142,7 +142,7 @@ DatabasesWHOISAPI.dbWhoisWeekly(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 

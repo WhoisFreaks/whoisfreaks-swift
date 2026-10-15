@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 # **dbNewlyCctld**
 ```swift
-    open class func dbNewlyCctld(whois: Bool, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyCctld(whois: Bool, date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered ccTLD (CSV)
@@ -28,7 +28,7 @@ Newly Registered ccTLD (CSV). Returns the file/snapshot described by this operat
 import WhoisFreaks
 
 let whois = true // Bool | 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Newly Registered ccTLD (CSV)
@@ -49,7 +49,7 @@ DatabasesNewlyRegisteredAPI.dbNewlyCctld(whois: whois, date: date, tlds: tlds) {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **whois** | **Bool** |  | 
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
 
 ### Return type
@@ -69,7 +69,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyCctldCleaned**
 ```swift
-    open class func dbNewlyCctldCleaned(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyCctldCleaned(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered ccTLD Cleaned WHOIS (CSV)
@@ -81,7 +81,7 @@ Newly Registered ccTLD Cleaned WHOIS (CSV). Returns the file/snapshot described 
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Newly Registered ccTLD Cleaned WHOIS (CSV)
 DatabasesNewlyRegisteredAPI.dbNewlyCctldCleaned(date: date) { (response, error) in
@@ -100,7 +100,7 @@ DatabasesNewlyRegisteredAPI.dbNewlyCctldCleaned(date: date) { (response, error) 
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyCctldJson**
 ```swift
-    open class func dbNewlyCctldJson(date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func dbNewlyCctldJson(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
 ```
 
 Newly Registered ccTLD (JSON)
@@ -131,7 +131,7 @@ Newly Registered ccTLD (JSON). Returns the file/snapshot described by this opera
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Newly Registered ccTLD (JSON)
@@ -151,7 +151,7 @@ DatabasesNewlyRegisteredAPI.dbNewlyCctldJson(date: date, tlds: tlds) { (response
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
 
 ### Return type
@@ -171,7 +171,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyDns**
 ```swift
-    open class func dbNewlyDns(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyDns(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered With DNS
@@ -183,7 +183,7 @@ Newly Registered With DNS. Returns the file/snapshot described by this operation
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Newly Registered With DNS
 DatabasesNewlyRegisteredAPI.dbNewlyDns(date: date) { (response, error) in
@@ -202,7 +202,7 @@ DatabasesNewlyRegisteredAPI.dbNewlyDns(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyGtld**
 ```swift
-    open class func dbNewlyGtld(whois: Bool, date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyGtld(whois: Bool, date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered gTLD (CSV)
@@ -234,7 +234,7 @@ Newly Registered gTLD (CSV). Returns the file/snapshot described by this operati
 import WhoisFreaks
 
 let whois = true // Bool | 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Newly Registered gTLD (CSV)
@@ -255,7 +255,7 @@ DatabasesNewlyRegisteredAPI.dbNewlyGtld(whois: whois, date: date, tlds: tlds) { 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **whois** | **Bool** |  | 
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
 
 ### Return type
@@ -275,7 +275,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyGtldCleaned**
 ```swift
-    open class func dbNewlyGtldCleaned(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbNewlyGtldCleaned(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Newly Registered gTLD Cleaned WHOIS (CSV)
@@ -287,7 +287,7 @@ Newly Registered gTLD Cleaned WHOIS (CSV). Returns the file/snapshot described b
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Newly Registered gTLD Cleaned WHOIS (CSV)
 DatabasesNewlyRegisteredAPI.dbNewlyGtldCleaned(date: date) { (response, error) in
@@ -306,7 +306,7 @@ DatabasesNewlyRegisteredAPI.dbNewlyGtldCleaned(date: date) { (response, error) i
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -325,7 +325,7 @@ Name | Type | Description  | Notes
 
 # **dbNewlyGtldJson**
 ```swift
-    open class func dbNewlyGtldJson(date: Date? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
+    open class func dbNewlyGtldJson(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil, completion: @escaping (_ data: [String]?, _ error: Error?) -> Void)
 ```
 
 Newly Registered gTLD (JSON)
@@ -337,7 +337,7 @@ Newly Registered gTLD (JSON). Returns the file/snapshot described by this operat
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 let tlds = "tlds_example" // String |  (optional)
 
 // Newly Registered gTLD (JSON)
@@ -357,7 +357,7 @@ DatabasesNewlyRegisteredAPI.dbNewlyGtldJson(date: date, tlds: tlds) { (response,
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
  **tlds** | **String** |  | [optional] 
 
 ### Return type

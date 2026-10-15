@@ -20,7 +20,7 @@ open class DatabasesExpiringDroppedAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbDropped(whois: Bool, date: Date? = nil) async throws -> URL {
+    open class func dbDropped(whois: Bool, date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbDroppedWithRequestBuilder(whois: whois, date: date).execute().body
     }
 
@@ -35,9 +35,9 @@ open class DatabasesExpiringDroppedAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbDroppedWithRequestBuilder(whois: Bool, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbDroppedWithRequestBuilder(whois: Bool, date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/dropped"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -65,7 +65,7 @@ open class DatabasesExpiringDroppedAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbDroppedBacklinks(whois: Bool? = nil, date: Date? = nil) async throws -> URL {
+    open class func dbDroppedBacklinks(whois: Bool? = nil, date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbDroppedBacklinksWithRequestBuilder(whois: whois, date: date).execute().body
     }
 
@@ -80,9 +80,9 @@ open class DatabasesExpiringDroppedAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbDroppedBacklinksWithRequestBuilder(whois: Bool? = nil, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbDroppedBacklinksWithRequestBuilder(whois: Bool? = nil, date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/domainer/dropped/backlinks"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -110,7 +110,7 @@ open class DatabasesExpiringDroppedAPI {
      - returns: [String]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbDroppedJson(date: Date? = nil, tlds: String? = nil) async throws -> [String] {
+    open class func dbDroppedJson(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) async throws -> [String] {
         return try await dbDroppedJsonWithRequestBuilder(date: date, tlds: tlds).execute().body
     }
 
@@ -125,9 +125,9 @@ open class DatabasesExpiringDroppedAPI {
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<[String]> 
      */
-    open class func dbDroppedJsonWithRequestBuilder(date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
+    open class func dbDroppedJsonWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
         let localVariablePath = "/v3.1/domains/dropped"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -155,7 +155,7 @@ open class DatabasesExpiringDroppedAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbExpired(whois: Bool, date: Date? = nil) async throws -> URL {
+    open class func dbExpired(whois: Bool, date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbExpiredWithRequestBuilder(whois: whois, date: date).execute().body
     }
 
@@ -170,9 +170,9 @@ open class DatabasesExpiringDroppedAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbExpiredWithRequestBuilder(whois: Bool, date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbExpiredWithRequestBuilder(whois: Bool, date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/expired"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -199,7 +199,7 @@ open class DatabasesExpiringDroppedAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbExpiredCleaned(date: Date? = nil) async throws -> URL {
+    open class func dbExpiredCleaned(date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbExpiredCleanedWithRequestBuilder(date: date).execute().body
     }
 
@@ -213,9 +213,9 @@ open class DatabasesExpiringDroppedAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbExpiredCleanedWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbExpiredCleanedWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/expired/cleaned"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)

@@ -15,9 +15,9 @@ public struct BulkDomainAvailabilityRequest: Codable, JSONEncodable, Hashable {
 
     public static let domainNamesRule = ArrayRule(minItems: nil, maxItems: 100, uniqueItems: false)
     public static let tldRule = ArrayRule(minItems: nil, maxItems: 100, uniqueItems: false)
-    /** Mode 1 — list of full domain names. Cannot be used with tld. */
+    /** Mode 1: list of full domain names. Cannot be used with tld. */
     public var domainNames: [String]?
-    /** Mode 2 — TLDs to check against the domain query param. Cannot be used with domainNames. */
+    /** Mode 2: TLDs to check against the domain query param. Cannot be used with domainNames. */
     public var tld: [String]?
 
     public init(domainNames: [String]? = nil, tld: [String]? = nil) {

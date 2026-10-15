@@ -10,7 +10,7 @@ Method | HTTP request | Description
 
 # **dbAsnWhois**
 ```swift
-    open class func dbAsnWhois(date: Date, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbAsnWhois(date: OpenAPIDateWithoutTime, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 ASN WHOIS Snapshot
@@ -22,7 +22,7 @@ ASN WHOIS Snapshot. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | 
+let date = 987 // OpenAPIDateWithoutTime | 
 
 // ASN WHOIS Snapshot
 DatabasesASNWHOISAPI.dbAsnWhois(date: date) { (response, error) in
@@ -41,7 +41,7 @@ DatabasesASNWHOISAPI.dbAsnWhois(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** |  | 
+ **date** | **OpenAPIDateWithoutTime** |  | 
 
 ### Return type
 

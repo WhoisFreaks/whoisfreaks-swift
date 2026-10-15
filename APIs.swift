@@ -10,6 +10,11 @@ import FoundationNetworking
 #endif
 open class WhoisFreaksAPI {
     public static var basePath = "https://api.whoisfreaks.com"
+    /// The spec's default server. Operations that declare their own server (database downloads)
+    /// use that server while `basePath` equals this value; once you change `basePath`, every request goes there.
+    public static let defaultBasePath = "https://api.whoisfreaks.com"
+    /// Your WhoisFreaks API key. Sent as the `apiKey` query parameter on every operation that requires authentication.
+    public static var apiKey: String?
     public static var customHeaders: [String: String] = [:]
     public static var credential: URLCredential?
     public static var requestBuilderFactory: RequestBuilderFactory = URLSessionRequestBuilderFactory()
@@ -30,7 +35,7 @@ open class RequestBuilder<T> {
 
     required public init(method: String, URLString: String, parameters: [String: Any]?, headers: [String: String] = [:], requiresAuthentication: Bool) {
         self.method = method
-        self.URLString = URLString
+        self.URLString = requiresAuthentication ? urlStringAddingApiKey(URLString) : URLString
         self.parameters = parameters
         self.headers = headers
         self.requiresAuthentication = requiresAuthentication
@@ -85,6 +90,21 @@ open class RequestBuilder<T> {
     open func addCredential() {
         credential = WhoisFreaksAPI.credential
     }
+}
+
+/// Appends `WhoisFreaksAPI.apiKey` as the `apiKey` query item, unless no key is set or the URL already has one.
+private func urlStringAddingApiKey(_ urlString: String) -> String {
+    guard let apiKey = WhoisFreaksAPI.apiKey, !apiKey.isEmpty,
+          var components = URLComponents(string: urlString) else {
+        return urlString
+    }
+    var queryItems = components.queryItems ?? []
+    guard !queryItems.contains(where: { $0.name == "apiKey" }) else {
+        return urlString
+    }
+    queryItems.append(URLQueryItem(name: "apiKey", value: apiKey))
+    components.queryItems = queryItems
+    return components.string ?? urlString
 }
 
 public protocol RequestBuilderFactory {

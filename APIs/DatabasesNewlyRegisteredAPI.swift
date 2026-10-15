@@ -21,7 +21,7 @@ open class DatabasesNewlyRegisteredAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyCctld(whois: Bool, date: Date? = nil, tlds: String? = nil) async throws -> URL {
+    open class func dbNewlyCctld(whois: Bool, date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) async throws -> URL {
         return try await dbNewlyCctldWithRequestBuilder(whois: whois, date: date, tlds: tlds).execute().body
     }
 
@@ -37,9 +37,9 @@ open class DatabasesNewlyRegisteredAPI {
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyCctldWithRequestBuilder(whois: Bool, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyCctldWithRequestBuilder(whois: Bool, date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/cctld"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -67,7 +67,7 @@ open class DatabasesNewlyRegisteredAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyCctldCleaned(date: Date? = nil) async throws -> URL {
+    open class func dbNewlyCctldCleaned(date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbNewlyCctldCleanedWithRequestBuilder(date: date).execute().body
     }
 
@@ -81,9 +81,9 @@ open class DatabasesNewlyRegisteredAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyCctldCleanedWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyCctldCleanedWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/cctld/cleaned"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -110,7 +110,7 @@ open class DatabasesNewlyRegisteredAPI {
      - returns: [String]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyCctldJson(date: Date? = nil, tlds: String? = nil) async throws -> [String] {
+    open class func dbNewlyCctldJson(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) async throws -> [String] {
         return try await dbNewlyCctldJsonWithRequestBuilder(date: date, tlds: tlds).execute().body
     }
 
@@ -125,9 +125,9 @@ open class DatabasesNewlyRegisteredAPI {
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<[String]> 
      */
-    open class func dbNewlyCctldJsonWithRequestBuilder(date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
+    open class func dbNewlyCctldJsonWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
         let localVariablePath = "/v3.1/domains/newly/cctld"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -154,7 +154,7 @@ open class DatabasesNewlyRegisteredAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyDns(date: Date? = nil) async throws -> URL {
+    open class func dbNewlyDns(date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbNewlyDnsWithRequestBuilder(date: date).execute().body
     }
 
@@ -168,9 +168,9 @@ open class DatabasesNewlyRegisteredAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyDnsWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyDnsWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/newly/dns"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -198,7 +198,7 @@ open class DatabasesNewlyRegisteredAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyGtld(whois: Bool, date: Date? = nil, tlds: String? = nil) async throws -> URL {
+    open class func dbNewlyGtld(whois: Bool, date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) async throws -> URL {
         return try await dbNewlyGtldWithRequestBuilder(whois: whois, date: date, tlds: tlds).execute().body
     }
 
@@ -214,9 +214,9 @@ open class DatabasesNewlyRegisteredAPI {
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyGtldWithRequestBuilder(whois: Bool, date: Date? = nil, tlds: String? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyGtldWithRequestBuilder(whois: Bool, date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/gtld"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -244,7 +244,7 @@ open class DatabasesNewlyRegisteredAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyGtldCleaned(date: Date? = nil) async throws -> URL {
+    open class func dbNewlyGtldCleaned(date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbNewlyGtldCleanedWithRequestBuilder(date: date).execute().body
     }
 
@@ -258,9 +258,9 @@ open class DatabasesNewlyRegisteredAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbNewlyGtldCleanedWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbNewlyGtldCleanedWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.1/download/domainer/gtld/cleaned"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -287,7 +287,7 @@ open class DatabasesNewlyRegisteredAPI {
      - returns: [String]
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbNewlyGtldJson(date: Date? = nil, tlds: String? = nil) async throws -> [String] {
+    open class func dbNewlyGtldJson(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) async throws -> [String] {
         return try await dbNewlyGtldJsonWithRequestBuilder(date: date, tlds: tlds).execute().body
     }
 
@@ -302,9 +302,9 @@ open class DatabasesNewlyRegisteredAPI {
      - parameter tlds: (query)  (optional)
      - returns: RequestBuilder<[String]> 
      */
-    open class func dbNewlyGtldJsonWithRequestBuilder(date: Date? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
+    open class func dbNewlyGtldJsonWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil, tlds: String? = nil) -> RequestBuilder<[String]> {
         let localVariablePath = "/v3.1/domains/newly/gtld"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)

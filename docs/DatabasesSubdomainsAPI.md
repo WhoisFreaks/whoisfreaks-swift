@@ -11,7 +11,7 @@ Method | HTTP request | Description
 
 # **dbSubdomainsDaily**
 ```swift
-    open class func dbSubdomainsDaily(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbSubdomainsDaily(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Subdomains Daily
@@ -23,7 +23,7 @@ Subdomains Daily. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Subdomains Daily
 DatabasesSubdomainsAPI.dbSubdomainsDaily(date: date) { (response, error) in
@@ -42,7 +42,7 @@ DatabasesSubdomainsAPI.dbSubdomainsDaily(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -61,7 +61,7 @@ Name | Type | Description  | Notes
 
 # **dbSubdomainsMonthly**
 ```swift
-    open class func dbSubdomainsMonthly(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbSubdomainsMonthly(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Subdomains Monthly
@@ -73,7 +73,7 @@ Subdomains Monthly. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Subdomains Monthly
 DatabasesSubdomainsAPI.dbSubdomainsMonthly(date: date) { (response, error) in
@@ -92,7 +92,7 @@ DatabasesSubdomainsAPI.dbSubdomainsMonthly(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 
@@ -111,7 +111,7 @@ Name | Type | Description  | Notes
 
 # **dbSubdomainsWeekly**
 ```swift
-    open class func dbSubdomainsWeekly(date: Date? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
+    open class func dbSubdomainsWeekly(date: OpenAPIDateWithoutTime? = nil, completion: @escaping (_ data: URL?, _ error: Error?) -> Void)
 ```
 
 Subdomains Weekly
@@ -123,7 +123,7 @@ Subdomains Weekly. Returns the file/snapshot described by this operation.
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = Date() // Date | yyyy-MM-dd; omit for latest (optional)
+let date = 987 // OpenAPIDateWithoutTime | yyyy-MM-dd; omit for latest (optional)
 
 // Subdomains Weekly
 DatabasesSubdomainsAPI.dbSubdomainsWeekly(date: date) { (response, error) in
@@ -142,7 +142,7 @@ DatabasesSubdomainsAPI.dbSubdomainsWeekly(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **Date** | yyyy-MM-dd; omit for latest | [optional] 
+ **date** | **OpenAPIDateWithoutTime** | yyyy-MM-dd; omit for latest | [optional] 
 
 ### Return type
 

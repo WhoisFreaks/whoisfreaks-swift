@@ -22,9 +22,10 @@ public struct RegistryData: Codable, JSONEncodable, Hashable {
     public var domainRegistrar: RegistrarInformation?
     public var nameServers: [String]?
     public var domainStatus: [String]?
-    public var whoisRawDomain: String?
+    /** Raw registry WHOIS text (field name spelled as the API returns it) */
+    public var whoisRawRegistery: String?
 
-    public init(domainName: String? = nil, queryTime: String? = nil, whoisServer: String? = nil, domainRegistered: String? = nil, createDate: String? = nil, updateDate: String? = nil, expiryDate: String? = nil, domainRegistrar: RegistrarInformation? = nil, nameServers: [String]? = nil, domainStatus: [String]? = nil, whoisRawDomain: String? = nil) {
+    public init(domainName: String? = nil, queryTime: String? = nil, whoisServer: String? = nil, domainRegistered: String? = nil, createDate: String? = nil, updateDate: String? = nil, expiryDate: String? = nil, domainRegistrar: RegistrarInformation? = nil, nameServers: [String]? = nil, domainStatus: [String]? = nil, whoisRawRegistery: String? = nil) {
         self.domainName = domainName
         self.queryTime = queryTime
         self.whoisServer = whoisServer
@@ -35,7 +36,7 @@ public struct RegistryData: Codable, JSONEncodable, Hashable {
         self.domainRegistrar = domainRegistrar
         self.nameServers = nameServers
         self.domainStatus = domainStatus
-        self.whoisRawDomain = whoisRawDomain
+        self.whoisRawRegistery = whoisRawRegistery
     }
 
     public enum CodingKeys: String, CodingKey, CaseIterable {
@@ -49,7 +50,7 @@ public struct RegistryData: Codable, JSONEncodable, Hashable {
         case domainRegistrar = "domain_registrar"
         case nameServers = "name_servers"
         case domainStatus = "domain_status"
-        case whoisRawDomain = "whois_raw_domain"
+        case whoisRawRegistery = "whois_raw_registery"
     }
 
     public var additionalProperties: [String: AnyCodable] = [:]
@@ -81,7 +82,7 @@ public struct RegistryData: Codable, JSONEncodable, Hashable {
         try container.encodeIfPresent(domainRegistrar, forKey: .domainRegistrar)
         try container.encodeIfPresent(nameServers, forKey: .nameServers)
         try container.encodeIfPresent(domainStatus, forKey: .domainStatus)
-        try container.encodeIfPresent(whoisRawDomain, forKey: .whoisRawDomain)
+        try container.encodeIfPresent(whoisRawRegistery, forKey: .whoisRawRegistery)
         var additionalPropertiesContainer = encoder.container(keyedBy: String.self)
         try additionalPropertiesContainer.encodeMap(additionalProperties)
     }
@@ -101,7 +102,7 @@ public struct RegistryData: Codable, JSONEncodable, Hashable {
         domainRegistrar = try container.decodeIfPresent(RegistrarInformation.self, forKey: .domainRegistrar)
         nameServers = try container.decodeIfPresent([String].self, forKey: .nameServers)
         domainStatus = try container.decodeIfPresent([String].self, forKey: .domainStatus)
-        whoisRawDomain = try container.decodeIfPresent(String.self, forKey: .whoisRawDomain)
+        whoisRawRegistery = try container.decodeIfPresent(String.self, forKey: .whoisRawRegistery)
         var nonAdditionalPropertyKeys = Set<String>()
         nonAdditionalPropertyKeys.insert("domain_name")
         nonAdditionalPropertyKeys.insert("query_time")
@@ -113,7 +114,7 @@ public struct RegistryData: Codable, JSONEncodable, Hashable {
         nonAdditionalPropertyKeys.insert("domain_registrar")
         nonAdditionalPropertyKeys.insert("name_servers")
         nonAdditionalPropertyKeys.insert("domain_status")
-        nonAdditionalPropertyKeys.insert("whois_raw_domain")
+        nonAdditionalPropertyKeys.insert("whois_raw_registery")
         let additionalPropertiesContainer = try decoder.container(keyedBy: String.self)
         additionalProperties = try additionalPropertiesContainer.decodeMap(AnyCodable.self, excludedKeys: nonAdditionalPropertyKeys)
     }

@@ -19,7 +19,7 @@ open class DatabasesIPGeolocationAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbIpCity(date: Date) async throws -> URL {
+    open class func dbIpCity(date: OpenAPIDateWithoutTime) async throws -> URL {
         return try await dbIpCityWithRequestBuilder(date: date).execute().body
     }
 
@@ -33,9 +33,9 @@ open class DatabasesIPGeolocationAPI {
      - parameter date: (query)  
      - returns: RequestBuilder<URL> 
      */
-    open class func dbIpCityWithRequestBuilder(date: Date) -> RequestBuilder<URL> {
+    open class func dbIpCityWithRequestBuilder(date: OpenAPIDateWithoutTime) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/snapshot/ip/city"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -75,7 +75,7 @@ open class DatabasesIPGeolocationAPI {
      */
     open class func dbIpCityStatusWithRequestBuilder() -> RequestBuilder<SnapshotStatus> {
         let localVariablePath = "/v3.3/status/snapshot/ip/city"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -98,7 +98,7 @@ open class DatabasesIPGeolocationAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbIpCountry(date: Date) async throws -> URL {
+    open class func dbIpCountry(date: OpenAPIDateWithoutTime) async throws -> URL {
         return try await dbIpCountryWithRequestBuilder(date: date).execute().body
     }
 
@@ -112,9 +112,9 @@ open class DatabasesIPGeolocationAPI {
      - parameter date: (query)  
      - returns: RequestBuilder<URL> 
      */
-    open class func dbIpCountryWithRequestBuilder(date: Date) -> RequestBuilder<URL> {
+    open class func dbIpCountryWithRequestBuilder(date: OpenAPIDateWithoutTime) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.3/download/snapshot/ip/country"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -154,7 +154,7 @@ open class DatabasesIPGeolocationAPI {
      */
     open class func dbIpCountryStatusWithRequestBuilder() -> RequestBuilder<SnapshotStatus> {
         let localVariablePath = "/v3.3/status/snapshot/ip/country"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         let localVariableUrlComponents = URLComponents(string: localVariableURLString)

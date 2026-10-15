@@ -24,7 +24,7 @@ Download the daily malware threat feed (CSV)
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = "date_example" // String | Feed date (yyyy-MM-dd); defaults to latest available (optional)
+let date = "date_example" // String | Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
 
 // Download the daily malware threat feed (CSV)
 DatabasesThreatFeedAPI.downloadThreatFeedMalware(date: date) { (response, error) in
@@ -43,7 +43,7 @@ DatabasesThreatFeedAPI.downloadThreatFeedMalware(date: date) { (response, error)
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **String** | Feed date (yyyy-MM-dd); defaults to latest available | [optional] 
+ **date** | **String** | Feed date (yyyy-MM-dd); omit for the full dump of the feed | [optional] 
 
 ### Return type
 
@@ -56,7 +56,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -100,7 +100,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -116,7 +116,7 @@ Download the daily phishing threat feed (CSV)
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = "date_example" // String | Feed date (yyyy-MM-dd); defaults to latest available (optional)
+let date = "date_example" // String | Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
 
 // Download the daily phishing threat feed (CSV)
 DatabasesThreatFeedAPI.downloadThreatFeedPhishing(date: date) { (response, error) in
@@ -135,7 +135,7 @@ DatabasesThreatFeedAPI.downloadThreatFeedPhishing(date: date) { (response, error
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **String** | Feed date (yyyy-MM-dd); defaults to latest available | [optional] 
+ **date** | **String** | Feed date (yyyy-MM-dd); omit for the full dump of the feed | [optional] 
 
 ### Return type
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -192,7 +192,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -208,7 +208,7 @@ Download the daily spam threat feed (CSV)
 // The following code samples are still beta. For any issue, please report via http://github.com/OpenAPITools/openapi-generator/issues/new
 import WhoisFreaks
 
-let date = "date_example" // String | Feed date (yyyy-MM-dd); defaults to latest available (optional)
+let date = "date_example" // String | Feed date (yyyy-MM-dd); omit for the full dump of the feed (optional)
 
 // Download the daily spam threat feed (CSV)
 DatabasesThreatFeedAPI.downloadThreatFeedSpam(date: date) { (response, error) in
@@ -227,7 +227,7 @@ DatabasesThreatFeedAPI.downloadThreatFeedSpam(date: date) { (response, error) in
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **date** | **String** | Feed date (yyyy-MM-dd); defaults to latest available | [optional] 
+ **date** | **String** | Feed date (yyyy-MM-dd); omit for the full dump of the feed | [optional] 
 
 ### Return type
 
@@ -240,7 +240,7 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 
@@ -284,7 +284,7 @@ This endpoint does not need any parameter.
 ### HTTP request headers
 
  - **Content-Type**: Not defined
- - **Accept**: application/octet-stream
+ - **Accept**: application/octet-stream, application/json
 
 [[Back to top]](#) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to Model list]](../README.md#documentation-for-models) [[Back to README]](../README.md)
 

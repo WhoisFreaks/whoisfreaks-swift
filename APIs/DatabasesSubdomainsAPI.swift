@@ -19,7 +19,7 @@ open class DatabasesSubdomainsAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbSubdomainsDaily(date: Date? = nil) async throws -> URL {
+    open class func dbSubdomainsDaily(date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbSubdomainsDailyWithRequestBuilder(date: date).execute().body
     }
 
@@ -33,9 +33,9 @@ open class DatabasesSubdomainsAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbSubdomainsDailyWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbSubdomainsDailyWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.2/download/dbupdate/daily/subdomains"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -61,7 +61,7 @@ open class DatabasesSubdomainsAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbSubdomainsMonthly(date: Date? = nil) async throws -> URL {
+    open class func dbSubdomainsMonthly(date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbSubdomainsMonthlyWithRequestBuilder(date: date).execute().body
     }
 
@@ -75,9 +75,9 @@ open class DatabasesSubdomainsAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbSubdomainsMonthlyWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbSubdomainsMonthlyWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.2/download/dbupdate/monthly/subdomains"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)
@@ -103,7 +103,7 @@ open class DatabasesSubdomainsAPI {
      - returns: URL
      */
     @available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 6.0, *)
-    open class func dbSubdomainsWeekly(date: Date? = nil) async throws -> URL {
+    open class func dbSubdomainsWeekly(date: OpenAPIDateWithoutTime? = nil) async throws -> URL {
         return try await dbSubdomainsWeeklyWithRequestBuilder(date: date).execute().body
     }
 
@@ -117,9 +117,9 @@ open class DatabasesSubdomainsAPI {
      - parameter date: (query) yyyy-MM-dd; omit for latest (optional)
      - returns: RequestBuilder<URL> 
      */
-    open class func dbSubdomainsWeeklyWithRequestBuilder(date: Date? = nil) -> RequestBuilder<URL> {
+    open class func dbSubdomainsWeeklyWithRequestBuilder(date: OpenAPIDateWithoutTime? = nil) -> RequestBuilder<URL> {
         let localVariablePath = "/v3.2/download/dbupdate/weekly/subdomains"
-        let localVariableURLString = WhoisFreaksAPI.basePath + localVariablePath
+        let localVariableURLString = (WhoisFreaksAPI.basePath == WhoisFreaksAPI.defaultBasePath ? "https://files.whoisfreaks.com" : WhoisFreaksAPI.basePath) + localVariablePath
         let localVariableParameters: [String: Any]? = nil
 
         var localVariableUrlComponents = URLComponents(string: localVariableURLString)

@@ -9,7 +9,7 @@ Method | HTTP request | Description
 
 # **subdomains**
 ```swift
-    open class func subdomains(domain: String, after: Date? = nil, before: Date? = nil, status: Status_subdomains? = nil, page: Int? = nil, format: Format_subdomains? = nil, completion: @escaping (_ data: SubdomainsResponse?, _ error: Error?) -> Void)
+    open class func subdomains(domain: String, after: OpenAPIDateWithoutTime? = nil, before: OpenAPIDateWithoutTime? = nil, status: Status_subdomains? = nil, page: Int? = nil, format: Format_subdomains? = nil, completion: @escaping (_ data: SubdomainsResponse?, _ error: Error?) -> Void)
 ```
 
 Subdomains Lookup
@@ -22,8 +22,8 @@ All subdomains including nested. 2 credits per query.
 import WhoisFreaks
 
 let domain = "domain_example" // String | 
-let after = Date() // Date |  (optional)
-let before = Date() // Date |  (optional)
+let after = 987 // OpenAPIDateWithoutTime |  (optional)
+let before = 987 // OpenAPIDateWithoutTime |  (optional)
 let status = "status_example" // String |  (optional)
 let page = 987 // Int |  (optional) (default to 1)
 let format = "format_example" // String |  (optional) (default to .json)
@@ -46,8 +46,8 @@ SubdomainsAPI.subdomains(domain: domain, after: after, before: before, status: s
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **domain** | **String** |  | 
- **after** | **Date** |  | [optional] 
- **before** | **Date** |  | [optional] 
+ **after** | **OpenAPIDateWithoutTime** |  | [optional] 
+ **before** | **OpenAPIDateWithoutTime** |  | [optional] 
  **status** | **String** |  | [optional] 
  **page** | **Int** |  | [optional] [default to 1]
  **format** | **String** |  | [optional] [default to .json]

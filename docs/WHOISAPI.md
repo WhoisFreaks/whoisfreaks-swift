@@ -64,10 +64,12 @@ Name | Type | Description  | Notes
 
 # **whoisHistory**
 ```swift
-    open class func whoisHistory(domainName: String, page: Int? = nil, format: Format_whoisHistory? = nil, completion: @escaping (_ data: WhoisHistoricalResponse?, _ error: Error?) -> Void)
+    open class func whoisHistory(domainName: String, format: Format_whoisHistory? = nil, completion: @escaping (_ data: WhoisHistoricalResponse?, _ error: Error?) -> Void)
 ```
 
 Historical WHOIS records for a domain
+
+Every WHOIS record captured for the domain since 1986, in one response (no pagination). Cost 2 credits.
 
 ### Example
 ```swift
@@ -75,11 +77,10 @@ Historical WHOIS records for a domain
 import WhoisFreaks
 
 let domainName = "domainName_example" // String | Domain to fetch historical WHOIS records for
-let page = 987 // Int | Page number (optional)
 let format = "format_example" // String |  (optional)
 
 // Historical WHOIS records for a domain
-WHOISAPI.whoisHistory(domainName: domainName, page: page, format: format) { (response, error) in
+WHOISAPI.whoisHistory(domainName: domainName, format: format) { (response, error) in
     guard error == nil else {
         print(error)
         return
@@ -96,7 +97,6 @@ WHOISAPI.whoisHistory(domainName: domainName, page: page, format: format) { (res
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **domainName** | **String** | Domain to fetch historical WHOIS records for | 
- **page** | **Int** | Page number | [optional] 
  **format** | **String** |  | [optional] 
 
 ### Return type

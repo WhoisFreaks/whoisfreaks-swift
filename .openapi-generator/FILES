@@ -113,6 +113,7 @@ Models/WhoisOrganization.swift
 Models/WhoisPerson.swift
 Models/WhoisResponse.swift
 Models/WhoisRole.swift
+OpenAPIDateWithoutTime.swift
 OpenISO8601DateFormatter.swift
 Package.swift
 README.md

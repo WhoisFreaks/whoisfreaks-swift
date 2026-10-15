@@ -3,11 +3,11 @@ targets:
   WhoisFreaks:
     type: framework
     platform: iOS
-    deploymentTarget: "11.0"
+    deploymentTarget: "13.0"
     sources: [.]
     info:
       path: ./Info.plist
-      version: 0.21.0
+      version: 0.23.2
     settings:
       APPLICATION_EXTENSION_API_ONLY: true
     scheme: {}
