@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.osx.deployment_target = '10.15'
   s.tvos.deployment_target = '13.0'
   s.watchos.deployment_target = '6.0'
-  s.version = '0.23.2'
+  s.version = '0.24.0'
   s.source = { :git => 'https://github.com/WhoisFreaks/whoisfreaks-swift.git', :tag => "v#{s.version}" }
   s.authors = 'WhoisFreaks'
   s.license = { :type => 'MIT', :file => 'LICENSE' }

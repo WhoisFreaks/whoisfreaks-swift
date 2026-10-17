@@ -58,7 +58,7 @@ A live WHOIS lookup returns structured JSON like this (trimmed):
 Swift Package Manager, in `Package.swift`:
 
 ```swift
-.package(url: "https://github.com/WhoisFreaks/whoisfreaks-swift.git", from: "0.23.2")
+.package(url: "https://github.com/WhoisFreaks/whoisfreaks-swift.git", from: "0.24.0")
 ```
 
 Or in Xcode: File > Add Package Dependencies, then paste the repository URL.
